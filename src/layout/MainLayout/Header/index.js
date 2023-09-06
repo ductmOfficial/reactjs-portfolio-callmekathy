@@ -1,4 +1,5 @@
 // material-ui
+import { useTheme } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -6,9 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 
 // third-party
-import { useTheme } from '@mui/material';
-import { IconBrightnessDown } from '@tabler/icons';
-import { IconBrandSkype, IconFileDownload } from '@tabler/icons-react';
+import { IconBrandSkype, IconFileDownload, IconSunMoon } from '@tabler/icons-react';
 
 // project imports
 import HideOnScroll from 'components/HideOnScroll';
@@ -61,7 +60,7 @@ const Header = () => {
             </Tooltip>
             <Tooltip title={theme.palette.mode === 'dark' ? 'Light mode' : 'Dark mode'} arrow>
               <IconButton color="primary" aria-label="dark mode" onClick={onModeToggle} sx={{ bgcolor: 'background.default' }}>
-                <IconBrightnessDown stroke={1.5} size="1.3rem" />
+                <IconSunMoon stroke={1.5} size="1.3rem" />
               </IconButton>
             </Tooltip>
           </Box>
