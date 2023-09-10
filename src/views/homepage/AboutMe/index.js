@@ -35,17 +35,23 @@ const AboutMe = () => {
       <Container maxWidth="xl">
         <Box maxWidth={1200} margin="0 auto">
           <Grid container spacing={{ xs: 2, sm: 4 }}>
-            <Grid item xs={12} sm={12} lg={4}>
-              <Box sx={{ display: 'flex', justifyContent: { xs: 'center', lg: 'flex-start' }, mb: { xs: 4, lg: 0 } }}>
-                <Pic>
+            <Grid item xs={12} lg={4}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: { xs: 'center', lg: 'flex-start' },
+                  mb: { xs: 4, lg: 0 },
+                }}
+              >
+                <Pic sx={{ maxWidth: { xs: 400, lg: 320 } }}>
                   <div className="wrapper">
                     <img src={ImageAvatar} alt="Avatar" className="img" />
                   </div>
                 </Pic>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6} lg={4}>
-              <Box sx={{ textAlign: { sm: 'right' } }}>
+            <Grid item xs={12} lg={4}>
+              <Box sx={{ textAlign: { lg: 'right' } }}>
                 <Typography variant="numberedHeading" component="h2" gutterBottom>
                   About me
                 </Typography>
@@ -65,37 +71,42 @@ const AboutMe = () => {
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6} lg={4}>
+            <Grid item xs={12} lg={4}>
               <Box>
-                <Typography variant="numberedHeading" component="h2" gutterBottom sx={{ visibility: 'hidden' }}>
+                <Typography
+                  variant="numberedHeading"
+                  component="h2"
+                  gutterBottom
+                  sx={{ visibility: 'hidden', display: { xs: 'none', lg: 'block' } }}
+                >
                   About me
                 </Typography>
                 <Grid container spacing={2}>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sm={6} lg={12}>
                     <Box>
                       <Typography variant="h5">Phone</Typography>
                       <Typography color="text.secondary">{profile.phoneNumber}</Typography>
                     </Box>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sm={6} lg={12}>
                     <Box>
                       <Typography variant="h5">Email</Typography>
                       <Typography color="text.secondary">{profile.email}</Typography>
                     </Box>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sm={6} lg={12}>
                     <Box>
                       <Typography variant="h5">Location</Typography>
                       <Typography color="text.secondary">{`${profile.address.city}, ${profile.address.country}`}</Typography>
                     </Box>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sm={6} lg={12}>
                     <Box>
                       <Typography variant="h5">Skype</Typography>
                       <Typography color="text.secondary">{profile.social.skype}</Typography>
                     </Box>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sm={6} lg={12}>
                     <Box>
                       <Typography variant="h5" gutterBottom>
                         You can follow me also here:
