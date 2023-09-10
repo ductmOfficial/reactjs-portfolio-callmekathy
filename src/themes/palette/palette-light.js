@@ -11,7 +11,7 @@ export default {
     white: '#ffffff',
   },
   primary: generatePaletteColor('#e37bbc'),
-  secondary: generatePaletteColor('#F7A400', '#3a9efd'),
+  secondary: generatePaletteColor('#4b405c'),
   error: generatePaletteColor('#d32f2f'),
   warning: generatePaletteColor('#ed6c02'),
   info: generatePaletteColor('#0288d1'),
@@ -23,7 +23,7 @@ export default {
   },
   background: {
     paper: '#ffffff',
-    default: '#f1f1f1',
+    default: '#f8f8f8',
   },
-  divider: '#f1f1f1',
+  divider: '#f8f8f8',
 };

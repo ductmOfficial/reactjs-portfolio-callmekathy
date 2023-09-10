@@ -67,6 +67,9 @@ const AboutMe = () => {
             </Grid>
             <Grid item xs={12} sm={6} lg={4}>
               <Box>
+                <Typography variant="numberedHeading" component="h2" gutterBottom sx={{ visibility: 'hidden' }}>
+                  About me
+                </Typography>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <Box>
@@ -98,16 +101,59 @@ const AboutMe = () => {
                         You can follow me also here:
                       </Typography>
                       <Stack direction="row" spacing={1}>
-                        <IconButton color="primary" href={profile.social.facebook} target="_blank" sx={{ bgcolor: 'background.paper' }}>
+                        <IconButton
+                          color="primary"
+                          href={profile.social.facebook}
+                          target="_blank"
+                          sx={{
+                            color: 'common.white',
+                            bgcolor: 'primary.300',
+                            '&:hover': {
+                              color: 'primary.300',
+                            },
+                          }}
+                        >
                           <IconBrandFacebook stroke={1.5} size="1.3rem" />
                         </IconButton>
-                        <IconButton color="primary" href={profile.social.linkedin} target="_blank" sx={{ bgcolor: 'background.paper' }}>
+                        <IconButton
+                          color="primary"
+                          href={profile.social.linkedin}
+                          target="_blank"
+                          sx={{
+                            color: 'common.white',
+                            bgcolor: 'primary.300',
+                            '&:hover': {
+                              color: 'primary.300',
+                            },
+                          }}
+                        >
                           <IconBrandLinkedin stroke={1.5} size="1.3rem" />
                         </IconButton>
-                        <IconButton color="primary" href={profile.social.instagram} target="_blank" sx={{ bgcolor: 'background.paper' }}>
+                        <IconButton
+                          color="primary"
+                          href={profile.social.instagram}
+                          target="_blank"
+                          sx={{
+                            color: 'common.white',
+                            bgcolor: 'primary.300',
+                            '&:hover': {
+                              color: 'primary.300',
+                            },
+                          }}
+                        >
                           <IconBrandInstagram stroke={1.5} size="1.3rem" />
                         </IconButton>
-                        <IconButton color="primary" href={`skype:${profile.social.skype}?chat`} sx={{ bgcolor: 'background.paper' }}>
+                        <IconButton
+                          color="primary"
+                          href={`skype:${profile.social.skype}?chat`}
+                          sx={{
+                            color: 'common.white',
+                            bgcolor: 'primary.300',
+                            '&:hover': {
+                              color: 'primary.300',
+                            },
+                          }}
+                        >
                           <IconBrandSkype stroke={1.5} size="1.3rem" />
                         </IconButton>
                       </Stack>

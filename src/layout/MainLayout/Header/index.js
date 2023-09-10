@@ -2,12 +2,13 @@
 import { useTheme } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 
 // third-party
-import { IconBrandSkype, IconFileDownload, IconSunMoon } from '@tabler/icons-react';
+import { IconBrandSkype, IconSunMoon } from '@tabler/icons-react';
 
 // project imports
 import HideOnScroll from 'components/HideOnScroll';
@@ -37,17 +38,7 @@ const Header = () => {
 
           <Box sx={{ flexGrow: 0, display: 'flex', gap: 1.5 }}>
             <NavMenu sx={{ ml: 3, display: { xs: 'none', lg: 'flex' } }} />
-            <Tooltip title="Download CV" arrow>
-              <IconButton
-                color="primary"
-                target="_blank"
-                href="/resume.pdf"
-                aria-label="download cv"
-                sx={{ bgcolor: 'background.default' }}
-              >
-                <IconFileDownload stroke={1.5} size="1.3rem" />
-              </IconButton>
-            </Tooltip>
+
             <Tooltip title="Skype me" arrow>
               <IconButton
                 color="primary"
@@ -63,6 +54,9 @@ const Header = () => {
                 <IconSunMoon stroke={1.5} size="1.3rem" />
               </IconButton>
             </Tooltip>
+            <Button variant="outlined" color="primary" target="_blank" href="/resume.pdf">
+              Download CV
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>

@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 
 // project imports
-import { Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import Head from './Head';
 import Header from './Header';
 import MainContent from './MainContent';
@@ -25,7 +25,12 @@ const MainLayout = () => (
         <Outlet />
 
         <Box sx={{ py: 2, textAlign: 'center' }}>
-          <Typography color="text.secondary">Designed & Built by Duc Tran</Typography>
+          <Typography color="text.secondary" variant="body2">
+            Designed & Built by{' '}
+            <Link href="https://ductran.vercel.app/" target="_blank" underline="none">
+              Duc Tran
+            </Link>
+          </Typography>
         </Box>
       </MainContent>
     </Box>

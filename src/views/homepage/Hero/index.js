@@ -32,12 +32,12 @@ const Hero = () => {
             <Button
               size="large"
               target="_blank"
-              variant="outlined"
+              variant="contained"
               href={`mailto:${profile.email}?subject=An amazing job opportunity inside!`}
             >
               Hire me now
             </Button>
-            <Button size="large" variant="contained" target="_blank" href="/resume.pdf" aria-label="download cv">
+            <Button size="large" variant="outlined" target="_blank" href="/resume.pdf" aria-label="download cv">
               Download CV
             </Button>
           </Stack>
