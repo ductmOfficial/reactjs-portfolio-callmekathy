@@ -62,14 +62,12 @@ const EducationCard = forwardRef((props, ref) => {
   const { ...item } = props;
 
   return (
-    <Card ref={ref} elevation={0} sx={{ bgcolor: 'background.default' }}>
+    <Card ref={ref} elevation={0} sx={{ bgcolor: 'primary.main', color: 'common.white' }}>
       <CardContent>
-        <Typography color="primary.main">
+        <Typography color="primary.100">
           <IconCertificate stroke={1} size="5rem" />
         </Typography>
-        <Typography variant="overline" color="text.secondary">
-          {item.provider}
-        </Typography>
+        <Typography variant="overline">{item.provider}</Typography>
         <Typography variant="h3">{item.title}</Typography>
         <Typography>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</Typography>
       </CardContent>

@@ -31,7 +31,7 @@ const AboutMe = () => {
   }, [srConfig]);
 
   return (
-    <Box ref={revealContainer} component="section" id="about-me" sx={{ py: 8, bgcolor: 'background.default' }}>
+    <Box ref={revealContainer} component="section" id="about-me" sx={{ py: 8, bgcolor: 'background.paper' }}>
       <Container maxWidth="xl">
         <Box maxWidth={1200} margin="0 auto">
           <Grid container spacing={{ xs: 2, sm: 4 }}>
@@ -118,9 +118,9 @@ const AboutMe = () => {
                           target="_blank"
                           sx={{
                             color: 'common.white',
-                            bgcolor: 'primary.300',
+                            bgcolor: 'primary.main',
                             '&:hover': {
-                              color: 'primary.300',
+                              color: 'primary.main',
                             },
                           }}
                         >
@@ -132,9 +132,9 @@ const AboutMe = () => {
                           target="_blank"
                           sx={{
                             color: 'common.white',
-                            bgcolor: 'primary.300',
+                            bgcolor: 'primary.main',
                             '&:hover': {
-                              color: 'primary.300',
+                              color: 'primary.main',
                             },
                           }}
                         >
@@ -146,9 +146,9 @@ const AboutMe = () => {
                           target="_blank"
                           sx={{
                             color: 'common.white',
-                            bgcolor: 'primary.300',
+                            bgcolor: 'primary.main',
                             '&:hover': {
-                              color: 'primary.300',
+                              color: 'primary.main',
                             },
                           }}
                         >
@@ -159,9 +159,9 @@ const AboutMe = () => {
                           href={`skype:${profile.social.skype}?chat`}
                           sx={{
                             color: 'common.white',
-                            bgcolor: 'primary.300',
+                            bgcolor: 'primary.main',
                             '&:hover': {
-                              color: 'primary.300',
+                              color: 'primary.main',
                             },
                           }}
                         >
