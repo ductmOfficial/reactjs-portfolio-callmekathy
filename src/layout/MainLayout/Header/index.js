@@ -50,11 +50,16 @@ const Header = () => {
               </IconButton>
             </Tooltip>
             <Tooltip title={theme.palette.mode === 'dark' ? 'Light mode' : 'Dark mode'} arrow>
-              <IconButton color="primary" aria-label="dark mode" onClick={onModeToggle} sx={{ bgcolor: 'background.default' }}>
+              <IconButton
+                color="primary"
+                aria-label="dark mode"
+                onClick={onModeToggle}
+                sx={{ bgcolor: 'background.default', display: 'none' }}
+              >
                 <IconSunMoon stroke={1.5} size="1.3rem" />
               </IconButton>
             </Tooltip>
-            <Button variant="outlined" color="primary" target="_blank" href="/resume.pdf">
+            <Button variant="contained" color="primary" target="_blank" href="/resume.pdf">
               Download CV
             </Button>
           </Box>

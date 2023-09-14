@@ -18,7 +18,7 @@ import sr from 'lib/sr';
 const education = [
   { id: 1, title: 'Bachelor Degree', provider: 'Can Tho University' },
   { id: 2, title: 'IELTS Certification 8.0', provider: 'IDP Education' },
-  { id: 3, title: 'ISTQB Foundation Level Certification', provider: 'ATSQA in the U.S.' },
+  { id: 3, title: 'ISTQB Foundation Level', provider: 'ATSQA in the U.S.' },
 ];
 
 const Education = () => {
@@ -62,13 +62,20 @@ const EducationCard = forwardRef((props, ref) => {
   const { ...item } = props;
 
   return (
-    <Card ref={ref} elevation={0} sx={{ bgcolor: 'primary.main', color: 'common.white' }}>
+    <Card
+      ref={ref}
+      elevation={0}
+      sx={{
+        border: '1px solid',
+        borderColor: 'divider',
+      }}
+    >
       <CardContent>
-        <Typography color="primary.100">
+        <Typography color="primary.main">
           <IconCertificate stroke={1} size="5rem" />
         </Typography>
         <Typography variant="overline">{item.provider}</Typography>
-        <Typography variant="h3">{item.title}</Typography>
+        <Typography variant="h2">{item.title}</Typography>
         <Typography>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</Typography>
       </CardContent>
     </Card>

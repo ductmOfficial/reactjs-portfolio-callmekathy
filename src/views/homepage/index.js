@@ -12,8 +12,8 @@ const Homepage = () => (
   <Box component="article">
     <Hero />
     <AboutMe />
-    <Education />
     <Skills />
+    <Education />
     <GetInTouch />
   </Box>
 );
