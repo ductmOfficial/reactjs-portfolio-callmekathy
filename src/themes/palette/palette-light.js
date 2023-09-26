@@ -11,6 +11,7 @@ export default {
     white: '#ffffff',
   },
   primary: generatePaletteColor('#df8c86'),
+  // primary: generatePaletteColor('#ffa0b1'),
   secondary: generatePaletteColor('#f3ebdd'),
   error: generatePaletteColor('#d32f2f'),
   warning: generatePaletteColor('#ed6c02'),

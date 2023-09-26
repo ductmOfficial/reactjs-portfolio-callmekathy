@@ -24,8 +24,10 @@ const Hero = () => {
           </Typography>
           <Box maxWidth={600}>
             <Typography variant="lead">
-              I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m
-              focused on building accessible, human-centered products at Upstatement.
+              I used to be an English teacher’s assistant at an international school for about 5 years. Currently, I am mainly working as an
+              English tutor for primary students near my vicinity. Also, I am keeping it close to heart to move to a position in the IT
+              field as a quality control or tester, so I give it a hundred percent to take some related courses for testing’s fundamental
+              knowledge.
             </Typography>
           </Box>
           <Stack direction="row" spacing={2} sx={{ mt: 4 }}>

@@ -56,18 +56,15 @@ const AboutMe = () => {
                   About me
                 </Typography>
                 <Typography gutterBottom>
-                  Hello! My name is Brittany and I enjoy creating things that live on the internet. My interest in web development started
-                  back in 2012 when I decided to try editing custom Tumblr themes — turns out hacking together a custom reblog button taught
-                  me a lot about HTML & CSS!
+                  Hello! My name is Khue, but you can call me Kathy as my English name. As for my major, I studied the English language for
+                  4 years and then was an English teacher’s assistant in some international school for a long time. No other languages can
+                  compare to English when it comes to my favourite language. I am good at speaking English as fluently as I possibly can and
+                  I think it can be one of my strengths since English is also extremely important in this job.
                 </Typography>
                 <Typography gutterBottom>
-                  Fast-forward to today, and I’ve had the privilege of working at an advertising agency, a start-up, a huge corporation, and
-                  a student-led design studio. My main focus these days is building accessible, inclusive products and digital experiences
-                  at Upstatement for a variety of clients.
-                </Typography>
-                <Typography gutterBottom>
-                  I also recently launched a course that covers everything you need to build a web app with the Spotify API using Node &
-                  React.
+                  Honestly, I do not have much of any experience in the testing field. However, I am really careful and I focus on details
+                  when working. That’s why I think this career may suit me well. Also, I am fast-learning and always willing to learn no
+                  matter how hard it is, so I would love to have a chance of being a tester, even as a fresher tester.
                 </Typography>
               </Box>
             </Grid>

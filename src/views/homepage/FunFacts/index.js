@@ -25,7 +25,7 @@ const skills = [
   { title: 'Something' },
 ];
 
-const Skills = () => {
+const FunFacts = () => {
   const revealTitle = useRef(null);
   const revealCards = useRef([]);
   const { srConfig } = config;
@@ -36,19 +36,38 @@ const Skills = () => {
   }, [srConfig]);
 
   return (
-    <Box component="section" id="experiences-skills" sx={{ bgcolor: 'background.paper', py: 8 }}>
+    <Box component="section" id="fun-facts" sx={{ bgcolor: 'background.paper', py: 8 }}>
       <Container maxWidth="xl">
-        <Box ref={revealTitle} maxWidth={720} margin="0 auto" textAlign="center" mb={4}>
-          <Typography variant="numberedHeading" component="h2" gutterBottom>
-            Experiences and Skills
-          </Typography>
-          <Typography variant="lead">
-            My experiences are mostly on education, not really related to the testing area at all, but thanks to those years of working with
-            students and other teachers, I have trained some necessary soft skills, the likes of problem solving, time-management and
-            teamwork. In addition, my confidence is in my english competence which I think can help a lot in reading English documents and
-            communicating with foreign clients when needed.
-          </Typography>
-        </Box>
+        <Grid container spacing={4}>
+          <Grid item xs={6}>
+            <Box display="flex" flexDirection="column" gap={0}>
+              <Box bgcolor="primary.50" p={3} />
+              <Box bgcolor="primary.100" p={3} />
+              <Box bgcolor="primary.200" p={3} />
+              <Box bgcolor="primary.300" p={3} />
+              <Box bgcolor="primary.400" p={3} />
+              <Box bgcolor="primary.500" p={3} />
+              <Box bgcolor="primary.600" p={3} />
+              <Box bgcolor="primary.700" p={3} />
+              <Box bgcolor="primary.800" p={3} />
+              <Box bgcolor="primary.900" p={3} />
+            </Box>
+          </Grid>
+          <Grid item xs={6}>
+            <Box display="flex" flexDirection="column" gap={0}>
+              <Box bgcolor="secondary.50" p={3} />
+              <Box bgcolor="secondary.100" p={3} />
+              <Box bgcolor="secondary.200" p={3} />
+              <Box bgcolor="secondary.300" p={3} />
+              <Box bgcolor="secondary.400" p={3} />
+              <Box bgcolor="secondary.500" p={3} />
+              <Box bgcolor="secondary.600" p={3} />
+              <Box bgcolor="secondary.700" p={3} />
+              <Box bgcolor="secondary.800" p={3} />
+              <Box bgcolor="secondary.900" p={3} />
+            </Box>
+          </Grid>
+        </Grid>
         <Box maxWidth={640} margin="0 auto">
           <Grid container spacing={2} justifyContent="stretch">
             {skills.map((item, index) => (
@@ -91,4 +110,4 @@ const SkillCard = forwardRef((props, ref) => {
   );
 });
 
-export default Skills;
+export default FunFacts;

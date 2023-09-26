@@ -27,7 +27,7 @@ const GetInTouch = () => {
           </Typography>
           <Typography variant="lead" component="p" mb={4}>
             I’m currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi,
-            I’ll try my best to get back to you!
+            I’ll try my best to get back to you! Thank you and I hope to be a part of your company.
           </Typography>
           <Button
             variant="contained"
