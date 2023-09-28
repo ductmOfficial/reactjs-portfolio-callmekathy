@@ -56,15 +56,19 @@ const AboutMe = () => {
                   About me
                 </Typography>
                 <Typography gutterBottom>
-                  Hello! My name is Khue, but you can call me Kathy as my English name. As for my major, I studied the English language for
-                  4 years and then was an English teacher’s assistant in some international school for a long time. No other languages can
-                  compare to English when it comes to my favourite language. I am good at speaking English as fluently as I possibly can and
-                  I think it can be one of my strengths since English is also extremely important in this job.
+                  Hello! My name is Khue and I am an English teacher’s assistant in an international school at the present. I am good at
+                  speaking English as fluently as I possibly can and I think it can be one of my strengths in this job.
                 </Typography>
                 <Typography gutterBottom>
-                  Honestly, I do not have much of any experience in the testing field. However, I am really careful and I focus on details
-                  when working. That’s why I think this career may suit me well. Also, I am fast-learning and always willing to learn no
-                  matter how hard it is, so I would love to have a chance of being a tester, even as a fresher tester.
+                  As for the reasons why I wish to move to a testing career, simply because I find it interesting and I am definitely
+                  knowledgeable about testing as well as its objectives I seriously put my heart to it to spend time taking part in testing
+                  classes, searching for a tester job.
+                </Typography>
+                <Typography gutterBottom>
+                  Regarding my personal traits that I think may suit the job well, I am extremely careful and I always focus on details when
+                  working. Also, I am fast-learning and willing to learn no matter how hard it is. Honestly, I am aware that my journey in
+                  this new field will start from 0, but I strongly believe that with all my adequate preparation, the likes of taking a
+                  fresher testing course and proper attitudes, I hope to be considered an opportunity to learn and gain experience.
                 </Typography>
               </Box>
             </Grid>

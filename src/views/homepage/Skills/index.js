@@ -43,10 +43,8 @@ const Skills = () => {
             Experiences and Skills
           </Typography>
           <Typography variant="lead">
-            My experiences are mostly on education, not really related to the testing area at all, but thanks to those years of working with
-            students and other teachers, I have trained some necessary soft skills, the likes of problem solving, time-management and
-            teamwork. In addition, my confidence is in my english competence which I think can help a lot in reading English documents and
-            communicating with foreign clients when needed.
+            I have been an English teacher’s assistant at Vietnam Australia International School since 2018. I support foreign teachers,
+            teach the lessons for students, connect expat teachers and parents, and work as a teacher sometimes.
           </Typography>
         </Box>
         <Box maxWidth={640} margin="0 auto">

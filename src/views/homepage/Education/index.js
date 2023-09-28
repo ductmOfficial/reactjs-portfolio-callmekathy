@@ -34,14 +34,13 @@ const Education = () => {
   return (
     <Box component="section" id="education" sx={{ py: 8, bgcolor: 'background.paper' }}>
       <Container maxWidth="xl">
-        <Box ref={revealTitle} maxWidth={720} margin="0 auto" textAlign="center" mb={4}>
+        <Box ref={revealTitle} maxWidth={740} margin="0 auto" textAlign="center" mb={4}>
           <Typography variant="numberedHeading" component="h2" gutterBottom>
             My Education
           </Typography>
           <Typography variant="lead">
-            My major is English study and I am able to speak in English as fluently as I can. Also, I just attended a tester’s course which
-            mainly focused on ISTQB Foundation Level and I took part in the ISTQB FL test to get that certificate. Moreover, I spend time
-            self-learning some basic knowledge of SQL as well as API testing.
+            I’m an English Bachelor. I graduated with a 3.8 in GPA (out of 4) from Can Tho University. Recently, I have just obtained an
+            ISTQB Foundation Level Certificate also.
           </Typography>
         </Box>
         <Box>

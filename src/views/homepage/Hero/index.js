@@ -22,12 +22,10 @@ const Hero = () => {
           <Typography variant="mediumHeading" component="h2" color="text.secondary" gutterBottom>
             I guarantee the quality of web.
           </Typography>
-          <Box maxWidth={600}>
+          <Box maxWidth={760}>
             <Typography variant="lead">
-              I used to be an English teacher’s assistant at an international school for about 5 years. Currently, I am mainly working as an
-              English tutor for primary students near my vicinity. Also, I am keeping it close to heart to move to a position in the IT
-              field as a quality control or tester, so I give it a hundred percent to take some related courses for testing’s fundamental
-              knowledge.
+              I am an English teacher’s assistant based in HCM city. I am keeping it close to heart to look for a chance in the IT industry
+              and to be able to work as a Manual Tester. I just got an ISTQB Foundation Level certificate last month. All in all, I’m ready.
             </Typography>
           </Box>
           <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
