@@ -26,7 +26,7 @@ const config = {
     social: {
       facebook: 'https://www.facebook.com/khue.nguyen.986227',
       linkedin: 'https://www.linkedin.com/in/khue-nguyen-989493308',
-      skype: 'live:khuenguyen1707',
+      skype: 'live:.cid.27f618c9eb324a35',
     },
   },
   srConfig: (delay = 200, viewFactor = 0.25) => ({

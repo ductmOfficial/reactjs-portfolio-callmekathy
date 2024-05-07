@@ -9,7 +9,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 // third-party
-import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandSkype } from '@tabler/icons-react';
+import { IconBrandFacebook, IconBrandLinkedin, IconBrandSkype } from '@tabler/icons-react';
 
 // project imports
 import config from 'config';
