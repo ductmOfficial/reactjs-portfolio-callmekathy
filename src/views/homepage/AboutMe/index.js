@@ -143,20 +143,6 @@ const AboutMe = () => {
                         </IconButton>
                         <IconButton
                           color="primary"
-                          href={profile.social.instagram}
-                          target="_blank"
-                          sx={{
-                            color: 'common.white',
-                            bgcolor: 'primary.main',
-                            '&:hover': {
-                              color: 'primary.main',
-                            },
-                          }}
-                        >
-                          <IconBrandInstagram stroke={1.5} size="1.3rem" />
-                        </IconButton>
-                        <IconButton
-                          color="primary"
                           href={`skype:${profile.social.skype}?chat`}
                           sx={{
                             color: 'common.white',

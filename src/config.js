@@ -25,8 +25,7 @@ const config = {
     },
     social: {
       facebook: 'https://www.facebook.com/khue.nguyen.986227',
-      instagram: 'https://www.instagram.com/kathy_nguyen1707/',
-      linkedin: 'https://www.instagram.com/kathy_nguyen1707/',
+      linkedin: 'https://www.linkedin.com/in/khue-nguyen-989493308',
       skype: 'live:khuenguyen1707',
     },
   },
