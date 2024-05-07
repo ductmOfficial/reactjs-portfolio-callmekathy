@@ -16,8 +16,8 @@ const NavButton = styled(Button)(() => ({
 
 const pages = [
   { title: 'About me', path: '#about-me' },
-  { title: 'Education', path: '#education' },
-  { title: 'Experiences & Skills', path: '#experiences-skills' },
+  { title: 'Valuable Skills', path: '#experiences-skills' },
+  { title: 'Education & Certifications', path: '#education' },
   { title: 'Contact', path: '#get-in-touch' },
 ];
 

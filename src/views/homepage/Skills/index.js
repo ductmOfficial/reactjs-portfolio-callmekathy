@@ -17,12 +17,15 @@ import sr from 'lib/sr';
 import { Avatar } from '@mui/material';
 
 const skills = [
-  { title: 'Fluent English' },
+  { title: 'Proficient English' },
   { title: 'ISTQB Foundation' },
   { title: 'API Testing' },
   { title: 'SQL Foundation' },
   { title: 'Jira management' },
-  { title: 'Something' },
+  { title: 'Postman' },
+  { title: 'Figma' },
+  { title: 'Self-learning' },
+  { title: 'Attention to details' },
 ];
 
 const Skills = () => {
@@ -40,11 +43,11 @@ const Skills = () => {
       <Container maxWidth="xl">
         <Box ref={revealTitle} maxWidth={720} margin="0 auto" textAlign="center" mb={4}>
           <Typography variant="numberedHeading" component="h2" gutterBottom>
-            Experiences and Skills
+            Valuable Skills
           </Typography>
           <Typography variant="lead">
-            I have been an English teacher’s assistant at Vietnam Australia International School since 2018. I support foreign teachers,
-            teach the lessons for students, connect expat teachers and parents, and work as a teacher sometimes.
+            I have been an English teacher’s assistant at International Schools since 2016. I support foreign teachers, be a connection
+            between teachers and students/parents, and work as a teacher sometimes.
           </Typography>
         </Box>
         <Box maxWidth={640} margin="0 auto">

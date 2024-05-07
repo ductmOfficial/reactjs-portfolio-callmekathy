@@ -56,19 +56,19 @@ const AboutMe = () => {
                   About me
                 </Typography>
                 <Typography gutterBottom>
-                  Hello! My name is Khue and I am an English teacher’s assistant in an international school at the present. I am good at
-                  speaking English as fluently as I possibly can and I think it can be one of my strengths in this job.
+                  Hello there! I’m Khue, and I work as an English teacher. Undoubtedly, I am proficient in English. Recently, I have a keen
+                  interest in technology environment and the software development process. I am particularly drawn to opportunities for
+                  learning, communication, and collaboration within teams. Quality assurance is my passion, and I have found my niche in the
+                  Software Testing field.
                 </Typography>
                 <Typography gutterBottom>
-                  As for the reasons why I wish to move to a testing career, simply because I find it interesting and I am definitely
-                  knowledgeable about testing as well as its objectives I seriously put my heart to it to spend time taking part in testing
-                  classes, searching for a tester job.
+                  Currently, I am actively seeking opportunities as a Manual Tester, preferably starting with website testing. I am eager
+                  for a chance to prove myself and take on new challenges in this domain.
                 </Typography>
                 <Typography gutterBottom>
-                  Regarding my personal traits that I think may suit the job well, I am extremely careful and I always focus on details when
-                  working. Also, I am fast-learning and willing to learn no matter how hard it is. Honestly, I am aware that my journey in
-                  this new field will start from 0, but I strongly believe that with all my adequate preparation, the likes of taking a
-                  fresher testing course and proper attitudes, I hope to be considered an opportunity to learn and gain experience.
+                  I have acquired fundamental knowledge in Software testing, including ISTQB Foundation Level certification, API Testing
+                  using Postman, SQL Foundation, and more. I believe that my proficiency in English can also be a valuable asset in this
+                  role.
                 </Typography>
               </Box>
             </Grid>

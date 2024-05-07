@@ -25,7 +25,8 @@ const Hero = () => {
           <Box maxWidth={760}>
             <Typography variant="lead">
               I am an English teacher’s assistant based in HCM city. I am keeping it close to heart to look for a chance in the IT industry
-              and to be able to work as a Manual Tester. I just got an ISTQB Foundation Level certificate last month. All in all, I’m ready.
+              and to be able to work as a Manual Tester. I just got an ISTQB Foundation Level certificate recently, and more... All in all,
+              I’m ready.
             </Typography>
           </Box>
           <Stack direction="row" spacing={2} sx={{ mt: 4 }}>

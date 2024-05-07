@@ -16,9 +16,9 @@ import config from 'config';
 import sr from 'lib/sr';
 
 const education = [
-  { id: 1, title: 'Bachelor Degree', provider: 'Can Tho University' },
-  { id: 2, title: 'IELTS Certification 8.0', provider: 'IDP Education' },
-  { id: 3, title: 'ISTQB Foundation Level', provider: 'ATSQA in the U.S.' },
+  { id: 2, degree: 'IELTS Certification 6.5', provider: 'IDP Education', grade: '34/40', date: 'Oct 2023 - Dec 2023' },
+  { id: 3, degree: 'ISTQB Foundation Level', provider: 'ATSQA in the U.S.', grade: '6.5', date: 'Jul 2023 - Oct 2023' },
+  { id: 1, degree: 'Bachelor’s English Language', provider: 'Can Tho University', grade: '3.8/4', date: 'Sep 2012 - Sep 2016' },
 ];
 
 const Education = () => {
@@ -36,7 +36,7 @@ const Education = () => {
       <Container maxWidth="xl">
         <Box ref={revealTitle} maxWidth={740} margin="0 auto" textAlign="center" mb={4}>
           <Typography variant="numberedHeading" component="h2" gutterBottom>
-            My Education
+            Education & Certifications
           </Typography>
           <Typography variant="lead">
             I’m an English Bachelor. I graduated with a 3.8 in GPA (out of 4) from Can Tho University. Recently, I have just obtained an
@@ -75,8 +75,11 @@ const EducationCard = forwardRef((props, ref) => {
           <IconCertificate stroke={1} size="5rem" />
         </Typography>
         <Typography variant="overline">{item.provider}</Typography>
-        <Typography variant="h2">{item.title}</Typography>
-        <Typography>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</Typography>
+        <Typography variant="h2">{item.degree}</Typography>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Typography variant="caption">{item.date}</Typography>
+          <Typography variant="caption">Grade: {item.grade}</Typography>
+        </Box>
       </CardContent>
     </Card>
   );
