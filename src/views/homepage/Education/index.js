@@ -17,7 +17,7 @@ import sr from 'lib/sr';
 
 const education = [
   { id: 2, degree: 'IELTS Certification 6.5', provider: 'IDP Education', grade: '6.5', date: 'Oct 2023 - Dec 2023' },
-  { id: 3, degree: 'ISTQB Foundation Level', provider: 'ATSQA in the U.S.', grade: '34/40', date: 'Jul 2023 - Oct 2023' },
+  { id: 3, degree: 'ISTQB Foundation Level', provider: 'Vietnamese Testing Board (VTB)', grade: '34/40', date: 'Jul 2023 - Oct 2023' },
   { id: 1, degree: 'Bachelor’s English Language', provider: 'Can Tho University', grade: '3.8/4', date: 'Sep 2012 - Sep 2016' },
 ];
 
