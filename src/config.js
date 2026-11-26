@@ -9,7 +9,6 @@ const config = {
     siteName: 'callmekathy',
     description: '',
   },
-  apiKey: '4fb6229be9422aa0c9ada530de02a45d',
   userProfile: {
     firstName: 'Khue',
     lastName: 'Nguyen',
