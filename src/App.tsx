@@ -3,14 +3,17 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 
 import { Header } from "./components/Header";
-import { credit } from "./content/profile";
+import { credit, useContent } from "./content";
 import { AboutMe } from "./sections/AboutMe";
 import { Education } from "./sections/Education";
+import { Experience } from "./sections/Experience";
 import { GetInTouch } from "./sections/GetInTouch";
 import { Hero } from "./sections/Hero";
 import { Skills } from "./sections/Skills";
 
 export function App() {
+  const { labels } = useContent();
+
   return (
     <Box sx={{ display: "flex" }}>
       <Header />
@@ -28,6 +31,7 @@ export function App() {
         <Box component="article">
           <Hero />
           <AboutMe />
+          <Experience />
           <Skills />
           <Education />
           <GetInTouch />
@@ -35,7 +39,7 @@ export function App() {
 
         <Box component="footer" sx={{ py: 2, textAlign: "center" }}>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            Designed & Built by{" "}
+            {labels.builtBy}{" "}
             <Link href={credit.url} target="_blank" underline="always">
               {credit.name}
             </Link>

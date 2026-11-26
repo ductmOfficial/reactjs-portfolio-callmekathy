@@ -37,7 +37,10 @@ test.beforeEach(async ({ page }) => {
 test("shows the name, title and calls to action", async ({ page }) => {
   await expect(page).toHaveTitle("callmekathy");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Khue Nguyen");
-  await expect(page.getByRole("link", { name: "Hire me now" })).toHaveAttribute("href", /^mailto:/);
+  await expect(page.getByRole("link", { name: "Get in touch" })).toHaveAttribute(
+    "href",
+    /^mailto:/,
+  );
 });
 
 test("every section becomes visible when scrolled to", async ({ page }) => {
@@ -45,13 +48,15 @@ test("every section becomes visible when scrolled to", async ({ page }) => {
 
   for (const name of [
     "About me",
-    "Valuable Skills",
+    "Experience",
+    "Skills",
     "Education & Certifications",
     "Get In Touch",
   ]) {
     await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
   }
-  await expect(page.getByText("Attention to details")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Attention to detail" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Test Consultant" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "ISTQB Foundation Level" })).toBeVisible();
 });
 
@@ -69,7 +74,7 @@ test("the menu jumps to each section", async ({ page, isMobile }) => {
   await page.getByRole("navigation").getByRole("link", { name: "Contact" }).click();
 
   await expect(page).toHaveURL(/#get-in-touch$/);
-  await expect(page.getByRole("link", { name: "Say Hello" })).toBeInViewport();
+  await expect(page.getByRole("link", { name: "Say hello" })).toBeInViewport();
 });
 
 test("serves the CV as a PDF", async ({ request }) => {

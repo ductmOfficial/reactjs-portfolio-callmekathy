@@ -4,9 +4,10 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
 import { useReveal } from "../components/useReveal";
-import { getInTouch, hireMeMailto } from "../content/profile";
+import { contactMailto, useContent } from "../content";
 
 export function GetInTouch() {
+  const { contact } = useContent();
   const revealRef = useReveal<HTMLElement>();
 
   return (
@@ -19,13 +20,13 @@ export function GetInTouch() {
       <Container maxWidth="xl">
         <Box sx={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
           <Typography variant="numberedHeading" component="h2" gutterBottom>
-            Get In Touch
+            {contact.title}
           </Typography>
           <Typography variant="lead" component="p" sx={{ mb: 4 }}>
-            {getInTouch.text}
+            {contact.text}
           </Typography>
-          <Button variant="contained" size="large" target="_blank" href={hireMeMailto}>
-            Say Hello
+          <Button variant="contained" size="large" target="_blank" href={contactMailto}>
+            {contact.action}
           </Button>
         </Box>
       </Container>

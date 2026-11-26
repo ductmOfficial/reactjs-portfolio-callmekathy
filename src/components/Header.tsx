@@ -5,11 +5,13 @@ import ButtonBase from "@mui/material/ButtonBase";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 
-import { profile, sections } from "../content/profile";
+import { useContent } from "../content";
 import { HideOnScroll } from "./HideOnScroll";
 import { Logo } from "./Logo";
 
 export function Header() {
+  const { nav, labels, resumeUrl } = useContent();
+
   return (
     <HideOnScroll>
       <AppBar
@@ -32,15 +34,15 @@ export function Header() {
               spacing={1}
               sx={{ alignItems: "center", ml: 3, display: { xs: "none", lg: "flex" } }}
             >
-              {sections.map(({ id, title }) => (
+              {nav.map(({ id, title }) => (
                 <Button key={id} href={`#${id}`} sx={{ color: "inherit", whiteSpace: "nowrap" }}>
                   {title}
                 </Button>
               ))}
             </Stack>
 
-            <Button variant="contained" color="primary" target="_blank" href={profile.resumeUrl}>
-              Download CV
+            <Button variant="contained" color="primary" target="_blank" href={resumeUrl}>
+              {labels.downloadCv}
             </Button>
           </Box>
         </Toolbar>

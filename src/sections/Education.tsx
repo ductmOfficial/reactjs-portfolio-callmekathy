@@ -7,15 +7,21 @@ import Typography from "@mui/material/Typography";
 import { IconCertificate } from "@tabler/icons-react";
 
 import { useReveal } from "../components/useReveal";
-import { education } from "../content/profile";
+import { LineText } from "../components/LineText";
+import { useContent } from "../content";
 
-import type { EducationItem } from "../content/profile";
+import type { EducationItem } from "../content";
 
 function EducationCard({ item, index }: { item: EducationItem; index: number }) {
+  const { labels } = useContent();
   const revealRef = useReveal<HTMLDivElement>(index * 100);
 
   return (
-    <Card ref={revealRef} elevation={0} sx={{ border: "1px solid", borderColor: "divider" }}>
+    <Card
+      ref={revealRef}
+      elevation={0}
+      sx={{ height: 1, border: "1px solid", borderColor: "divider" }}
+    >
       <CardContent>
         <Typography component="div" sx={{ color: "primary.main" }}>
           <IconCertificate stroke={1} size="5rem" aria-hidden />
@@ -25,8 +31,14 @@ function EducationCard({ item, index }: { item: EducationItem; index: number }) 
           {item.degree}
         </Typography>
         <Box sx={{ display: "flex", gap: 2 }}>
-          <Typography variant="caption">{item.date}</Typography>
-          <Typography variant="caption">Grade: {item.grade}</Typography>
+          <Typography variant="caption">
+            <LineText line={item.date} />
+          </Typography>
+          {item.grade && (
+            <Typography variant="caption">
+              {labels.grade}: {item.grade}
+            </Typography>
+          )}
         </Box>
       </CardContent>
     </Card>
@@ -34,6 +46,7 @@ function EducationCard({ item, index }: { item: EducationItem; index: number }) 
 }
 
 export function Education() {
+  const { education } = useContent();
   const revealRef = useReveal<HTMLDivElement>();
 
   return (
@@ -41,13 +54,13 @@ export function Education() {
       <Container maxWidth="xl">
         <Box ref={revealRef} sx={{ maxWidth: 740, margin: "0 auto", textAlign: "center", mb: 4 }}>
           <Typography variant="numberedHeading" component="h2" gutterBottom>
-            Education & Certifications
+            {education.title}
           </Typography>
           <Typography variant="lead">{education.intro}</Typography>
         </Box>
         <Grid container spacing={2}>
           {education.items.map((item, index) => (
-            <Grid key={item.degree} size={{ xs: 12, lg: 4 }}>
+            <Grid key={item.degree} size={{ xs: 12, sm: 6, lg: 3 }}>
               <EducationCard item={item} index={index} />
             </Grid>
           ))}
