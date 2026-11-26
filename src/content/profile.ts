@@ -6,7 +6,6 @@ export const profile = {
   siteName: "callmekathy",
   email: "khuenguyen.official@gmail.com",
   social: {
-    facebook: "https://www.facebook.com/khue.nguyen.986227",
     linkedin: "https://www.linkedin.com/in/khue-nguyen-989493308",
   },
 } as const;
