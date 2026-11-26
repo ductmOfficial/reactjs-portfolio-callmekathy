@@ -3,6 +3,8 @@
 One-page portfolio for Khue Nguyen, a manual tester: who she is, her skills, education and
 certifications, and how to get in touch.
 
+**Live:** https://callmekathy.vercel.app
+
 **Stack:** Vite 8 · React 19 · TypeScript (strict) · MUI 9 with Emotion · Tabler icons ·
 self-hosted Roboto · Vitest and Testing Library · Playwright with axe · Lighthouse CI · pnpm on
 Node 24.
@@ -110,7 +112,9 @@ The site is static. To set up a Vercel project:
 1. Import the repository; Vercel detects Vite (build `pnpm build`, output `dist`).
 2. In **Settings → Build and Deployment**, set **Node.js Version** to **24.x** before the first
    deploy: `engines` requires Node 24 and the install stops on another version.
-3. Production deploys from `main`; every pull request gets a preview.
+3. In **Settings → Environments → Production**, the tracked branch must be `main`.
+   Production deploys from it to https://callmekathy.vercel.app; every pull request gets a
+   preview.
 
 No environment variables are needed.
 

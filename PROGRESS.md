@@ -4,19 +4,23 @@
 >
 > Legend: ✅ done · 🔄 in progress · ⬜ not started
 
-The site moves to a current toolchain with its content and look unchanged. Each step is a pull
-request that builds on its own, with green checks, merged with rebase.
+The site moved to a current toolchain with its content and look unchanged. Each step was a pull
+request that builds on its own, merged with rebase. Steps 1 to 3 were checked locally (step 3
+adds CI, which first ran on `main` right after it merged); steps 4 and 5 merged with `Verify` and
+`Browser` green.
 
 ## Steps
 
-| #   | Step                                                           | Branch                        | Status |
-| --- | -------------------------------------------------------------- | ----------------------------- | ------ |
-| 1   | Remove unused code and 22 unused dependencies                  | `chore/remove-movie-app-code` | 🔄     |
-| 2   | Vite, TypeScript, pnpm, React 19, MUI 9; content in one module | `build/migrate-to-vite`       | 🔄     |
-| 3   | CI `Verify`, commitlint, husky, ruleset                        | `ci/verify-pull-requests`     | 🔄     |
-| 4   | Unit tests, Playwright with axe, Lighthouse, `Browser` job     | `test/browser-checks`         | 🔄     |
-| 5   | README, this log, Dependabot                                   | `docs/readme`                 | 🔄     |
-| 6   | Vercel project on Node 24                                      | —                             | ⬜     |
+| #   | Step                                                                                           | PR  | Status |
+| --- | ---------------------------------------------------------------------------------------------- | --- | ------ |
+| 1   | Remove unused code and 22 unused dependencies                                                  | #1  | ✅     |
+| 2   | Vite, TypeScript, pnpm, React 19, MUI 9; content in one module                                 | #2  | ✅     |
+| 3   | CI `Verify`, commitlint, husky, ruleset                                                        | #3  | ✅     |
+| 4   | Fix phone overflow and footer link; unit tests, Playwright with axe, Lighthouse, `Browser` job | #4  | ✅     |
+| 5   | README, this log, Dependabot                                                                   | #5  | ✅     |
+| 6   | Vercel on Node 24 with the Vite preset, production from `main`                                 | —   | ✅     |
+
+All merged on 2026-11-26. The site is live at https://callmekathy.vercel.app.
 
 ## Decisions
 
