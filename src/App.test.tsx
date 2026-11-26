@@ -103,13 +103,19 @@ describe.each(Object.values(content))("App in $lang", (en) => {
     expect(hrefs.filter((href) => /^(skype|tel):/.test(href))).toEqual([]);
   });
 
+  it("links no Facebook profile", () => {
+    const { container } = renderPage();
+    const hrefs = [...container.querySelectorAll("a")].map(
+      (link) => link.getAttribute("href") ?? "",
+    );
+
+    expect(hrefs.filter((href) => href.includes("facebook.com"))).toEqual([]);
+    expect(screen.queryByRole("link", { name: /facebook/i })).toBeNull();
+  });
+
   it("gives the icon-only links an accessible name", () => {
     renderPage();
 
-    expect(screen.getByRole("link", { name: "Facebook" })).toHaveAttribute(
-      "href",
-      profile.social.facebook,
-    );
     expect(screen.getByRole("link", { name: "LinkedIn" })).toHaveAttribute(
       "href",
       profile.social.linkedin,

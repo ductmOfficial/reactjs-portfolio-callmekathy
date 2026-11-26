@@ -5,7 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import { alpha, styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { IconBrandFacebook, IconBrandLinkedin } from "@tabler/icons-react";
+import { IconBrandLinkedin } from "@tabler/icons-react";
 
 import avatar from "../assets/avatar.jpg";
 import { useReveal } from "../components/useReveal";
@@ -130,14 +130,6 @@ export function AboutMe() {
                     {labels.followMe}
                   </Typography>
                   <Stack direction="row" spacing={1}>
-                    <IconButton
-                      href={profile.social.facebook}
-                      target="_blank"
-                      aria-label="Facebook"
-                      sx={socialButton}
-                    >
-                      <IconBrandFacebook stroke={1.5} size="1.3rem" />
-                    </IconButton>
                     <IconButton
                       href={profile.social.linkedin}
                       target="_blank"
