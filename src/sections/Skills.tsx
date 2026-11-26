@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { IconAward } from "@tabler/icons-react";
 
 import { useReveal } from "../components/useReveal";
-import { skills } from "../content/profile";
+import { useContent } from "../content";
 import { pastel } from "../theme";
 
 function SkillCard({ title, index }: { title: string; index: number }) {
@@ -39,14 +39,15 @@ function SkillCard({ title, index }: { title: string; index: number }) {
 }
 
 export function Skills() {
+  const { skills } = useContent();
   const revealRef = useReveal<HTMLDivElement>();
 
   return (
-    <Box component="section" id="experiences-skills" sx={{ bgcolor: "background.paper", py: 8 }}>
+    <Box component="section" id="skills" sx={{ bgcolor: "background.paper", py: 8 }}>
       <Container maxWidth="xl">
         <Box ref={revealRef} sx={{ maxWidth: 720, margin: "0 auto", textAlign: "center", mb: 4 }}>
           <Typography variant="numberedHeading" component="h2" gutterBottom>
-            Valuable Skills
+            {skills.title}
           </Typography>
           <Typography variant="lead">{skills.intro}</Typography>
         </Box>

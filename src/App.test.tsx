@@ -3,7 +3,8 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { App } from "./App";
-import { education, profile, sections, skills } from "./content/profile";
+import { profile } from "./content";
+import { en } from "./content/en";
 import { theme } from "./theme";
 
 function renderPage() {
@@ -28,7 +29,7 @@ describe("App", () => {
     // The menu is hidden below the lg breakpoint, and jsdom applies no media queries.
     const nav = screen.getByRole("navigation", { hidden: true });
 
-    for (const { id, title } of sections) {
+    for (const { id, title } of en.nav) {
       expect(within(nav).getByRole("link", { name: title, hidden: true })).toHaveAttribute(
         "href",
         `#${id}`,
@@ -37,25 +38,43 @@ describe("App", () => {
     }
   });
 
-  it("lists every skill and every education entry", () => {
+  it("lists every role, skill and education entry", () => {
     renderPage();
 
-    for (const skill of skills.items) {
+    for (const item of en.experience.items) {
+      expect(screen.getByRole("heading", { name: item.role })).toBeInTheDocument();
+    }
+    for (const skill of en.skills.items) {
       expect(screen.getByRole("heading", { name: skill })).toBeInTheDocument();
     }
-    for (const item of education.items) {
+    for (const item of en.education.items) {
       expect(screen.getByRole("heading", { name: item.degree })).toBeInTheDocument();
-      expect(screen.getByText(`Grade: ${item.grade}`)).toBeInTheDocument();
+      if (item.grade) {
+        expect(screen.getByText(`${en.labels.grade}: ${item.grade}`)).toBeInTheDocument();
+      }
     }
+  });
+
+  it("marks every unconfirmed line", () => {
+    renderPage();
+
+    const unconfirmed = [
+      ...en.about.paragraphs,
+      ...en.experience.items.map((item) => item.summary),
+      ...en.education.items.map((item) => item.date),
+    ].filter((line) => typeof line !== "string");
+
+    expect(unconfirmed.length).toBeGreaterThan(0);
+    expect(screen.getAllByText(en.labels.toConfirm)).toHaveLength(unconfirmed.length);
   });
 
   it("links the CV and email actions", () => {
     renderPage();
 
-    for (const link of screen.getAllByRole("link", { name: "Download CV" })) {
-      expect(link).toHaveAttribute("href", profile.resumeUrl);
+    for (const link of screen.getAllByRole("link", { name: en.labels.downloadCv })) {
+      expect(link).toHaveAttribute("href", en.resumeUrl);
     }
-    for (const name of ["Hire me now", "Say Hello"]) {
+    for (const name of [en.hero.action, en.contact.action]) {
       expect(screen.getByRole("link", { name })).toHaveAttribute(
         "href",
         expect.stringMatching(new RegExp(`^mailto:${profile.email}\\?subject=`)),

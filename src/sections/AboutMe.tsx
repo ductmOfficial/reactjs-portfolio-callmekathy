@@ -9,7 +9,8 @@ import { IconBrandFacebook, IconBrandLinkedin } from "@tabler/icons-react";
 
 import avatar from "../assets/avatar.jpg";
 import { useReveal } from "../components/useReveal";
-import { aboutMe, profile } from "../content/profile";
+import { LineText, lineText } from "../components/LineText";
+import { profile, useContent } from "../content";
 import { pastel } from "../theme";
 
 import type { ReactNode } from "react";
@@ -62,6 +63,7 @@ function ContactItem({ label, children }: { label: string; children: ReactNode }
 }
 
 export function AboutMe() {
+  const { about, labels } = useContent();
   const revealRef = useReveal<HTMLElement>();
 
   return (
@@ -104,13 +106,16 @@ export function AboutMe() {
             <Grid size={{ xs: 12, lg: 4 }}>
               <Box sx={{ textAlign: { lg: "right" } }}>
                 <Typography variant="numberedHeading" component="h2" gutterBottom>
-                  About me
+                  {about.title}
                 </Typography>
-                {aboutMe.paragraphs.map((paragraph) => (
-                  <Typography key={paragraph} gutterBottom>
-                    {paragraph}
+                {about.paragraphs.map((paragraph) => (
+                  <Typography key={lineText(paragraph)} gutterBottom>
+                    <LineText line={paragraph} />
                   </Typography>
                 ))}
+                <Typography gutterBottom sx={{ color: "text.secondary" }}>
+                  {about.interest}
+                </Typography>
               </Box>
             </Grid>
             <Grid size={{ xs: 12, lg: 4 }}>
@@ -121,13 +126,13 @@ export function AboutMe() {
                 gutterBottom
                 sx={{ visibility: "hidden", display: { xs: "none", lg: "block" } }}
               >
-                About me
+                {about.title}
               </Typography>
               <Grid container spacing={2}>
-                <ContactItem label="Email">{profile.email}</ContactItem>
+                <ContactItem label={labels.email}>{profile.email}</ContactItem>
                 <Grid size={{ xs: 12, sm: 6, lg: 12 }}>
                   <Typography variant="h5" component="h3" gutterBottom>
-                    You can follow me also here:
+                    {labels.followMe}
                   </Typography>
                   <Stack direction="row" spacing={1}>
                     <IconButton
