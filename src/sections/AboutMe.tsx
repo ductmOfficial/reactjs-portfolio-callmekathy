@@ -10,15 +10,16 @@ import { IconBrandFacebook, IconBrandLinkedin } from "@tabler/icons-react";
 import avatar from "../assets/avatar.jpg";
 import { useReveal } from "../components/useReveal";
 import { aboutMe, profile } from "../content/profile";
+import { pastel } from "../theme";
 
 import type { ReactNode } from "react";
 
 // The photo sits on a tinted card with an offset outline behind it.
-const Picture = styled("div")(({ theme }) => ({
+const Picture = styled("div")({
   position: "relative",
   width: "100%",
   borderRadius: "10px",
-  backgroundColor: alpha(theme.palette.primary.main, 0.5),
+  backgroundColor: alpha(pastel.main, 0.5),
 
   img: {
     display: "block",
@@ -37,11 +38,11 @@ const Picture = styled("div")(({ theme }) => ({
     height: "100%",
     borderRadius: "10px",
     border: "3px solid",
-    borderColor: theme.palette.primary.main,
+    borderColor: pastel.main,
     top: "20px",
     left: "20px",
   },
-}));
+});
 
 const socialButton = {
   color: "common.white",

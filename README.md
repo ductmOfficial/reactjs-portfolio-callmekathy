@@ -130,9 +130,8 @@ No environment variables are needed.
 
 ## Known issues
 
-- The brand pink `#df8c86` reaches about 2.5:1 against white, below the 4.5:1 that WCAG AA asks
-  for body text and button labels. Color contrast is excluded from the axe and Lighthouse checks
-  until the palette changes.
+- `public/resume.pdf` still lists a phone number and a Skype ID, which the page no longer shows.
+  The PDF is an image export, so it needs a new version from its source.
 
 ## Progress
 

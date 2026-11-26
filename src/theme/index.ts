@@ -63,13 +63,23 @@ const MEDIUM = 500;
 const pxToRem = (size: number) => `${(size / FONT_SIZE_BASE).toFixed(4)}rem`;
 
 const textPrimary = "#354e5c";
-const textSecondary = alpha(textPrimary, 0.7);
+// 0.8 keeps secondary text above 4.5:1 on both white and the #f2f2f2 page background.
+const textSecondary = alpha(textPrimary, 0.8);
+
+// The brand pink stays for decoration (photo frame, skill cards). It is too light for text or
+// behind white text, so text, links and buttons use a deeper rose of the same hue: 5.3:1 on
+// white and 4.7:1 on #f2f2f2.
+export const pastel = {
+  main: "#df8c86",
+  light: lighten("#df8c86", 0.3),
+  300: lighten("#df8c86", 0.2),
+};
 
 export const theme = createTheme({
   palette: {
     mode: "light",
     common: { black: "#000000", white: "#ffffff" },
-    primary: paletteColor("#df8c86"),
+    primary: paletteColor("#ab5049"),
     secondary: paletteColor("#f3ebdd"),
     error: paletteColor("#d32f2f"),
     warning: paletteColor("#ed6c02"),

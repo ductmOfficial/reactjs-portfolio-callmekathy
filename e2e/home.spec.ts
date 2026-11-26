@@ -91,9 +91,6 @@ test("has no detectable accessibility violations", async ({ page }) => {
   await scrollThroughPage(page);
 
   const results = await new AxeBuilder({ page })
-    // Known issue: the brand pink (#df8c86) is below 4.5:1 against white, both as text and
-    // behind white text. Fixing it means changing the brand color, tracked separately.
-    .disableRules(["color-contrast"])
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
     .analyze();
 
