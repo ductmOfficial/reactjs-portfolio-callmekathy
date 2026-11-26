@@ -9,6 +9,7 @@ import { IconAward } from "@tabler/icons-react";
 
 import { useReveal } from "../components/useReveal";
 import { skills } from "../content/profile";
+import { pastel } from "../theme";
 
 function SkillCard({ title, index }: { title: string; index: number }) {
   const revealRef = useReveal<HTMLDivElement>(index * 100);
@@ -22,12 +23,12 @@ function SkillCard({ title, index }: { title: string; index: number }) {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          bgcolor: "primary.light",
-          color: "common.white",
+          bgcolor: pastel.light,
+          color: "text.primary",
         }}
       >
-        <Avatar sx={{ width: 80, height: 80, bgcolor: "primary.300", mb: 2 }}>
-          <IconAward stroke={1} size="3.5rem" />
+        <Avatar sx={{ width: 80, height: 80, bgcolor: pastel[300], color: "common.white", mb: 2 }}>
+          <IconAward stroke={1} size="3.5rem" aria-hidden />
         </Avatar>
         <Typography variant="h3" align="center" sx={{ fontWeight: "light" }}>
           {title}

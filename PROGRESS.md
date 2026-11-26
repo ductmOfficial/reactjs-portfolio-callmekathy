@@ -19,21 +19,25 @@ adds CI, which first ran on `main` right after it merged); steps 4 and 5 merged 
 | 4   | Fix phone overflow and footer link; unit tests, Playwright with axe, Lighthouse, `Browser` job | #4  | ✅     |
 | 5   | README, this log, Dependabot                                                                   | #5  | ✅     |
 | 6   | Vercel on Node 24 with the Vite preset, production from `main`                                 | —   | ✅     |
+| 7   | Phone number, location and Skype removed from the page                                         | #7  | ✅     |
+| 8   | Text, links and buttons in a deeper rose that meets WCAG AA contrast                           | #8  | ✅     |
 
 All merged on 2026-11-26. The site is live at https://callmekathy.vercel.app.
 
 ## Decisions
 
-| Decision                                                     | Reason                                                                                           |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| Vite single-page app, no router                              | One page and no server work; a router only served a 404 page                                     |
-| Keep MUI, now version 9                                      | The page keeps its exact look; checked by full-page screenshots before and after                 |
-| All text in `src/content/profile.ts`                         | A content change never touches a component; the unit tests read the same module                  |
-| Scroll reveal with `IntersectionObserver`                    | Same fade and slide as before without a library; skipped when the visitor prefers reduced motion |
-| Self-hosted Roboto through Fontsource                        | No request to Google Fonts and no render-blocking stylesheet                                     |
-| Avatar resized to 800 px                                     | Shown at 400 px at most; 125 kB instead of 878 kB                                                |
-| Light theme only                                             | The dark theme had no visible toggle, so visitors never saw it                                   |
-| Browser checks use the runner's Chrome through `CHROME_PATH` | No browser download and no apt packages in CI                                                    |
+| Decision                                                           | Reason                                                                                           |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| Vite single-page app, no router                                    | One page and no server work; a router only served a 404 page                                     |
+| Keep MUI, now version 9                                            | The page keeps its exact look; checked by full-page screenshots before and after                 |
+| All text in `src/content/profile.ts`                               | A content change never touches a component; the unit tests read the same module                  |
+| Scroll reveal with `IntersectionObserver`                          | Same fade and slide as before without a library; skipped when the visitor prefers reduced motion |
+| Self-hosted Roboto through Fontsource                              | No request to Google Fonts and no render-blocking stylesheet                                     |
+| Avatar resized to 800 px                                           | Shown at 400 px at most; 125 kB instead of 878 kB                                                |
+| Light theme only                                                   | The dark theme had no visible toggle, so visitors never saw it                                   |
+| Pink `#df8c86` for decoration, rose `#ab5049` for text and buttons | Same hue as before; the rose reaches 5.3:1 on white and 4.7:1 on the grey page background        |
+| No phone, location or Skype on the page                            | The site is public; email, Facebook and LinkedIn are enough, and a test keeps it so              |
+| Browser checks use the runner's Chrome through `CHROME_PATH`       | No browser download and no apt packages in CI                                                    |
 
 ## Visual check
 
@@ -43,9 +47,9 @@ identical.
 
 ## Issues met
 
-| Issue                                                                               | Fix                                               |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------- |
-| MUI 9 ignores the `color` prop on `Typography`; text fell back to the default color | Colors moved into `sx`                            |
-| The photo outline, offset 20 px, made the page wider than a phone screen            | Room for the outline next to the photo below `lg` |
-| The footer link differed from its sentence by color only (axe `link-in-text-block`) | Underlined                                        |
-| Brand pink below 4.5:1 against white (axe `color-contrast`)                         | Open: needs a palette change, see README          |
+| Issue                                                                               | Fix                                                                                                |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| MUI 9 ignores the `color` prop on `Typography`; text fell back to the default color | Colors moved into `sx`                                                                             |
+| The photo outline, offset 20 px, made the page wider than a phone screen            | Room for the outline next to the photo below `lg`                                                  |
+| The footer link differed from its sentence by color only (axe `link-in-text-block`) | Underlined                                                                                         |
+| Brand pink below 4.5:1 against white (axe `color-contrast`)                         | Rose `#ab5049` for text, links and buttons; the pink stays for decoration; contrast checks back on |
