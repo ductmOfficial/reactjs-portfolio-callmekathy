@@ -1,15 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>callmekathy</title>
-    <meta name="description" content="I guarantee the quality for web" />
-    <meta name="theme-color" content="#ffffff" />
+    <title>Khue Nguyen · Test Consultant</title>
+    <meta
+      name="description"
+      content="Khue Nguyen, Test Consultant at Netcompany. I test software so people can trust it."
+    />
+    <meta name="theme-color" content="#f8f4f1" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="callmekathy" />
-    <meta property="og:description" content="I guarantee the quality for web" />
+    <meta property="og:title" content="Khue Nguyen · Test Consultant" />
+    <meta
+      property="og:description"
+      content="Khue Nguyen, Test Consultant at Netcompany. I test software so people can trust it."
+    />
     <link rel="icon" type="image/png" href="/sakura.png" />
+    <link rel="preload" as="image" href="/avatar.webp" type="image/webp" fetchpriority="high" />
+    <!-- Set the theme before the first paint: the saved choice, else the system preference. -->
+    <script>
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch (e) {}
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+        document
+          .querySelector('meta[name="theme-color"]')
+          .setAttribute("content", theme === "dark" ? "#1a1718" : "#f8f4f1");
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

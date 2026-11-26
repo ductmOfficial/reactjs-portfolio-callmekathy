@@ -21,6 +21,19 @@ async function settleForAxe(page: Page) {
   await page.reload();
 }
 
+async function axeViolations(page: Page) {
+  const results = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
+    .analyze();
+  return results.violations.map(({ id, nodes }) => `${id} (${String(nodes.length)})`);
+}
+
+async function horizontalOverflow(page: Page) {
+  return page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+}
+
 // Fails any test that logs a console error or throws in the page.
 const test = base.extend<{ pageErrors: string[] }>({
   pageErrors: [
@@ -41,10 +54,16 @@ test.beforeEach(async ({ page }) => {
   await page.goto("/");
 });
 
-test("shows the name, title and calls to action", async ({ page }) => {
-  await expect(page).toHaveTitle("callmekathy");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Khue Nguyen");
+test("shows the role, the headline and the calls to action", async ({ page }) => {
+  await expect(page).toHaveTitle("Khue Nguyen · Test Consultant");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "I test software so people can trust it.",
+  );
   await expect(page.getByRole("link", { name: "Get in touch" })).toHaveAttribute(
+    "href",
+    "#contact",
+  );
+  await expect(page.getByRole("link", { name: "khuenguyen.official@gmail.com" })).toHaveAttribute(
     "href",
     /^mailto:/,
   );
@@ -54,25 +73,31 @@ test("every section becomes visible when scrolled to", async ({ page }) => {
   await scrollThroughPage(page);
 
   for (const name of [
-    "About me",
-    "Experience",
-    "Skills",
-    "Education & Certifications",
-    "Get In Touch",
+    "Career path",
+    "Understand, design, report",
+    "Toolbox",
+    "Certifications & education",
+    "Let’s talk.",
   ]) {
     await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
   }
-  await expect(page.getByRole("heading", { name: "Attention to detail" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Test Consultant" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "ISTQB Foundation Level" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Vietnam Australia International School" }),
+  ).toBeVisible();
+  await expect(
+    page.locator("#skills").getByText("Requirements analysis", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "ISTQB Certified Tester Foundation Level" }),
+  ).toBeVisible();
 });
 
 test("sections are visible without scrolling when motion is reduced", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.reload();
 
-  const section = page.locator("#get-in-touch");
-  await expect(section).toHaveCSS("opacity", "1");
+  await expect(page.locator("#contact")).toHaveCSS("opacity", "1");
+  await expect(page.locator("#experience li").last()).toHaveCSS("opacity", "1");
 });
 
 test("the menu jumps to each section", async ({ page, isMobile }) => {
@@ -80,8 +105,8 @@ test("the menu jumps to each section", async ({ page, isMobile }) => {
 
   await page.getByRole("navigation").getByRole("link", { name: "Contact" }).click();
 
-  await expect(page).toHaveURL(/#get-in-touch$/);
-  await expect(page.getByRole("link", { name: "Say hello" })).toBeInViewport();
+  await expect(page).toHaveURL(/#contact$/);
+  await expect(page.getByRole("link", { name: "khuenguyen.official@gmail.com" })).toBeInViewport();
 });
 
 for (const file of ["resume-en.pdf", "resume-vi.pdf"]) {
@@ -93,29 +118,23 @@ for (const file of ["resume-en.pdf", "resume-vi.pdf"]) {
   });
 }
 
-test("the CV buttons point at a PDF that exists", async ({ page, request }) => {
-  const href = await page.getByRole("link", { name: "Download CV" }).first().getAttribute("href");
+test("the CV links point at a PDF that exists", async ({ page, request }) => {
+  const hrefs = await page
+    .locator('a[href$=".pdf"]')
+    .evaluateAll((links) => links.map((link) => link.getAttribute("href")));
 
-  expect(href).toBe("/resume-en.pdf");
-  expect((await request.get(href ?? "")).status()).toBe(200);
+  expect(new Set(hrefs)).toEqual(new Set(["/resume-en.pdf"]));
+  expect((await request.get("/resume-en.pdf")).status()).toBe(200);
 });
 
 test("fits the viewport without horizontal scrolling", async ({ page }) => {
-  const overflow = await page.evaluate(
-    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-  );
-
-  expect(overflow).toBe(0);
+  expect(await horizontalOverflow(page)).toBe(0);
 });
 
 test("has no detectable accessibility violations", async ({ page }) => {
   await settleForAxe(page);
 
-  const results = await new AxeBuilder({ page })
-    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
-    .analyze();
-
-  expect(results.violations.map(({ id, nodes }) => `${id} (${String(nodes.length)})`)).toEqual([]);
+  expect(await axeViolations(page)).toEqual([]);
 });
 
 test.describe("in Vietnamese", () => {
@@ -124,10 +143,12 @@ test.describe("in Vietnamese", () => {
   });
 
   test("shows the Vietnamese page and CV", async ({ page }) => {
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nguyễn Khuê");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "Mình kiểm thử để phần mềm đáng tin cậy.",
+    );
     await expect(page.locator("html")).toHaveAttribute("lang", "vi");
     await expect(page).toHaveURL(/\?lang=vi/);
-    await expect(page.getByRole("link", { name: "Tải CV" }).first()).toHaveAttribute(
+    await expect(page.getByRole("link", { name: "Tải CV", exact: true })).toHaveAttribute(
       "href",
       "/resume-vi.pdf",
     );
@@ -136,26 +157,46 @@ test.describe("in Vietnamese", () => {
   test("keeps the language after a reload", async ({ page }) => {
     await page.reload();
 
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nguyễn Khuê");
+    await expect(page.locator("html")).toHaveAttribute("lang", "vi");
   });
 
   test("fits the viewport without horizontal scrolling", async ({ page }) => {
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-    );
-
-    expect(overflow).toBe(0);
+    expect(await horizontalOverflow(page)).toBe(0);
   });
 
   test("has no detectable accessibility violations", async ({ page }) => {
     await settleForAxe(page);
 
-    const results = await new AxeBuilder({ page })
-      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
-      .analyze();
+    expect(await axeViolations(page)).toEqual([]);
+  });
+});
 
-    expect(results.violations.map(({ id, nodes }) => `${id} (${String(nodes.length)})`)).toEqual(
-      [],
+test.describe("in the dark theme", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.getByRole("button", { name: "Dark theme" }).click();
+  });
+
+  test("switches the theme and keeps it after a reload", async ({ page }) => {
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await page.reload();
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await expect(page.getByRole("button", { name: "Dark theme" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
     );
+  });
+
+  test("has no detectable accessibility violations", async ({ page }) => {
+    await settleForAxe(page);
+
+    expect(await axeViolations(page)).toEqual([]);
+  });
+});
+
+test.describe("on a system set to dark", () => {
+  test.use({ colorScheme: "dark" });
+
+  test("opens in the dark theme on a first visit", async ({ page }) => {
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   });
 });

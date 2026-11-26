@@ -1,19 +1,15 @@
-import { ThemeProvider } from "@mui/material/styles";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { App } from "../App";
 import { content } from "../content";
-import { theme } from "../theme";
 import { LanguageProvider } from "./LanguageProvider";
 
 function renderPage() {
   return render(
-    <ThemeProvider theme={theme}>
-      <LanguageProvider>
-        <App />
-      </LanguageProvider>
-    </ThemeProvider>,
+    <LanguageProvider>
+      <App />
+    </LanguageProvider>,
   );
 }
 
@@ -32,7 +28,7 @@ describe("LanguageProvider", () => {
   it("starts in English", () => {
     renderPage();
 
-    expect(h1()).toHaveTextContent(content.en.name);
+    expect(h1()).toHaveTextContent(content.en.hero.tagline);
     expect(document.documentElement.lang).toBe("en");
     expect(window.location.search).toBe("");
   });
@@ -42,13 +38,14 @@ describe("LanguageProvider", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "VI Tiếng Việt" }));
 
-    expect(h1()).toHaveTextContent(content.vi.name);
+    expect(h1()).toHaveTextContent(content.vi.hero.tagline);
     expect(document.documentElement.lang).toBe("vi");
     expect(window.location.search).toBe("?lang=vi");
     expect(window.localStorage.getItem("lang")).toBe("vi");
-    for (const link of screen.getAllByRole("link", { name: content.vi.labels.downloadCv })) {
-      expect(link).toHaveAttribute("href", "/resume-vi.pdf");
-    }
+    expect(screen.getByRole("link", { name: content.vi.labels.downloadCv })).toHaveAttribute(
+      "href",
+      "/resume-vi.pdf",
+    );
     expect(screen.getByRole("button", { name: "VI Tiếng Việt" })).toHaveAttribute(
       "aria-pressed",
       "true",
@@ -56,7 +53,7 @@ describe("LanguageProvider", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "EN English" }));
 
-    expect(h1()).toHaveTextContent(content.en.name);
+    expect(h1()).toHaveTextContent(content.en.hero.tagline);
     expect(window.location.search).toBe("");
   });
 
@@ -64,14 +61,14 @@ describe("LanguageProvider", () => {
     window.history.replaceState(null, "", "/?lang=vi");
     renderPage();
 
-    expect(h1()).toHaveTextContent(content.vi.name);
+    expect(h1()).toHaveTextContent(content.vi.hero.tagline);
   });
 
   it("remembers the last choice", () => {
     window.localStorage.setItem("lang", "vi");
     renderPage();
 
-    expect(h1()).toHaveTextContent(content.vi.name);
+    expect(h1()).toHaveTextContent(content.vi.hero.tagline);
   });
 
   it("ignores an unknown language and blocked storage", () => {
@@ -84,6 +81,6 @@ describe("LanguageProvider", () => {
     });
     renderPage();
 
-    expect(h1()).toHaveTextContent(content.en.name);
+    expect(h1()).toHaveTextContent(content.en.hero.tagline);
   });
 });

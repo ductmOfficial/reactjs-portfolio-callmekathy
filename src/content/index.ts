@@ -5,7 +5,7 @@ import { vi } from "./vi";
 
 import type { Content, Language } from "./types";
 
-export type { Content, EducationItem, ExperienceItem, Language, Line, SectionId } from "./types";
+export type { CareerItem, Certification, Content, Language, Line, SectionId } from "./types";
 export { contactMailto, credit, profile } from "./profile";
 
 export const content: Record<Language, Content> = { en, vi };

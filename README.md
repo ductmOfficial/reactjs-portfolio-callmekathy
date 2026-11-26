@@ -5,20 +5,22 @@ who she is, her experience, skills, education and certifications, and how to get
 
 **Live:** https://callmekathy.vercel.app
 
-**Stack:** Vite 8 · React 19 · TypeScript (strict) · MUI 9 with Emotion · Tabler icons ·
-self-hosted Roboto · Vitest and Testing Library · Playwright with axe · Lighthouse CI · pnpm on
-Node 24.
+**Stack:** Vite 8 · React 19 · TypeScript (strict) · Tailwind CSS 4 ·
+[Sen UI](https://github.com/ductmOfficial/sen-ui) · self-hosted Be Vietnam Pro and IBM Plex Mono ·
+Vitest and Testing Library · Playwright with axe · Lighthouse CI · pnpm on Node 24.
+
+Light and dark themes: the page follows the system setting on a first visit, and the toggle in the
+header remembers the choice.
 
 ## Structure
 
 ```text
 src/
   content/profile.ts   every piece of text on the page: name, contact, skills, education
-  sections/            one component per page section (Hero, AboutMe, Skills, …)
-  components/          header, logo and the scroll reveal hook
-  theme/               MUI theme: brand palette and the custom typography variants
-  assets/              avatar photo
-public/                resume-en.pdf, resume-vi.pdf, favicon, robots.txt (served as is)
+  sections/            one component per page section (Hero, Stats, Career, HowIWork, …)
+  components/          header, language switch, theme toggle, layout helpers, scroll reveal
+  styles/index.css     Tailwind and Sen UI setup, light and dark color tokens
+public/                avatar.webp, resume-en.pdf, resume-vi.pdf, favicon, robots.txt (served as is)
 scripts/cv/            CV text in both languages and the script that renders the PDFs
 e2e/                   Playwright tests against the production build
 ```

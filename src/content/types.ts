@@ -4,19 +4,20 @@ export type Line = string | { text: string; toConfirm: true };
 
 export type Language = "en" | "vi";
 
-export type SectionId = "about-me" | "experience" | "skills" | "education" | "get-in-touch";
+export type SectionId = "experience" | "how-i-work" | "skills" | "certifications" | "contact";
 
-export interface ExperienceItem {
-  role: string;
-  company: string;
+export interface CareerItem {
   period: string;
+  org: string;
+  role: string;
   place: string;
+  status: "passed" | "running";
   summary: Line;
 }
 
-export interface EducationItem {
-  degree: string;
-  provider: string;
+export interface Certification {
+  name: string;
+  issuer: string;
   date: Line;
   grade?: string;
 }
@@ -24,21 +25,34 @@ export interface EducationItem {
 export interface Content {
   lang: Language;
   name: string;
+  role: string;
   nav: { id: SectionId; title: string }[];
   resumeUrl: string;
   labels: {
     downloadCv: string;
+    getInTouch: string;
+    linkedin: string;
     email: string;
-    followMe: string;
-    grade: string;
+    language: string;
     toConfirm: string;
     builtBy: string;
-    language: string;
+    passed: string;
+    running: string;
+    grade: string;
+    cv: string;
+    darkTheme: string;
+    menu: string;
   };
-  hero: { greeting: string; tagline: string; intro: string; action: string };
-  about: { title: string; paragraphs: Line[]; interest: string };
-  experience: { title: string; items: ExperienceItem[] };
-  skills: { title: string; intro: string; items: string[] };
-  education: { title: string; intro: string; items: EducationItem[] };
-  contact: { title: string; text: string; action: string };
+  hero: { status: string; tagline: string; intro: string };
+  stats: { value: string; label: string }[];
+  career: { kicker: string; title: string; aside: string; items: CareerItem[]; note: string };
+  howIWork: {
+    kicker: string;
+    title: string;
+    aside: string;
+    steps: { title: string; text: Line }[];
+  };
+  skills: { kicker: string; title: string; groups: { label: string; items: string[] }[] };
+  certifications: { kicker: string; title: string; items: Certification[] };
+  contact: { kicker: string; title: string; text: string; interest: string };
 }

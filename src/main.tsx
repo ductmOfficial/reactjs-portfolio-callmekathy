@@ -1,27 +1,22 @@
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
+import "@fontsource/be-vietnam-pro/400.css";
+import "@fontsource/be-vietnam-pro/500.css";
+import "@fontsource/be-vietnam-pro/600.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "./styles/index.css";
 
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "@mui/material/styles";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import { App } from "./App";
 import { LanguageProvider } from "./components/LanguageProvider";
-import { theme } from "./theme";
 
 const root = document.getElementById("root");
 if (!root) throw new Error("Missing #root element");
 
 createRoot(root).render(
   <StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <LanguageProvider>
-        <App />
-      </LanguageProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <App />
+    </LanguageProvider>
   </StrictMode>,
 );

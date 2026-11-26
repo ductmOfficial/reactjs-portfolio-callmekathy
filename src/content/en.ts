@@ -3,123 +3,165 @@ import type { Content } from "./types";
 export const en: Content = {
   lang: "en",
   name: "Khue Nguyen",
+  role: "Test Consultant",
   nav: [
-    { id: "about-me", title: "About me" },
     { id: "experience", title: "Experience" },
+    { id: "how-i-work", title: "How I work" },
     { id: "skills", title: "Skills" },
-    { id: "education", title: "Education & Certifications" },
-    { id: "get-in-touch", title: "Contact" },
+    { id: "certifications", title: "Certifications" },
+    { id: "contact", title: "Contact" },
   ],
   resumeUrl: "/resume-en.pdf",
   labels: {
     downloadCv: "Download CV",
+    getInTouch: "Get in touch",
+    linkedin: "LinkedIn",
     email: "Email",
-    followMe: "You can follow me also here:",
-    grade: "Grade",
-    toConfirm: "[to confirm]",
-    builtBy: "Designed & Built by",
     language: "Language",
+    toConfirm: "[to confirm]",
+    builtBy: "Built by",
+    passed: "passed",
+    running: "running",
+    grade: "Grade",
+    cv: "CV",
+    darkTheme: "Dark theme",
+    menu: "Sections",
   },
   hero: {
-    greeting: "Hi, my name is",
+    status: "Test Consultant · Netcompany · Ho Chi Minh City",
     tagline: "I test software so people can trust it.",
     intro:
-      "I’m a Test Consultant at Netcompany. I turn requirements into clear test cases, catch problems before users do, and explain them in plain words to developers and clients. ISTQB certified, fluent in English.",
-    action: "Get in touch",
+      "I turn requirements into clear test cases, catch problems before users do, and explain them in plain words to developers and clients. ISTQB certified, fluent in English.",
   },
-  about: {
-    title: "About me",
-    paragraphs: [
-      "Hello! I’m Khue, a Test Consultant at Netcompany. I joined in 2024 as a Manual Test Specialist after eight years in English education, and testing quickly became the work I want to grow in.",
-      {
-        text: "Most of my day is about understanding what a feature should do: reading requirements, asking the questions nobody has asked yet, and designing tests that cover the cases that matter. I test web applications and APIs, report defects clearly, and work directly with clients in English.",
-        toConfirm: true,
-      },
-      "I’m working towards becoming a Senior Tester, with deeper skills in requirements analysis and test design.",
-    ],
-    interest: "Outside work, I enjoy exploring new places and singing karaoke with friends.",
-  },
-  experience: {
-    title: "Experience",
+  stats: [
+    { value: "2+ yrs", label: "Software testing" },
+    { value: "34/40", label: "ISTQB Foundation" },
+    { value: "6.5", label: "IELTS" },
+    { value: "8 yrs", label: "English education" },
+  ],
+  career: {
+    kicker: "Experience",
+    title: "Career path",
+    aside: "From English classrooms to software testing.",
     items: [
       {
-        role: "Test Consultant",
-        company: "Netcompany",
-        period: "Jan 2025 – Present",
-        place: "Vietnam, hybrid",
-        summary: {
-          text: "Requirements analysis, test design, functional, regression and API testing for European clients.",
-          toConfirm: true,
-        },
+        period: "Oct 2016 – Aug 2018",
+        org: "EMG Education",
+        role: "Primary English Teaching Assistant",
+        place: "Ho Chi Minh City",
+        status: "passed",
+        summary:
+          "Supported foreign teachers in public schools, translated between teachers, students and parents, and kept class records.",
       },
       {
-        role: "Manual Test Specialist",
-        company: "Netcompany",
-        period: "Jun 2024 – Dec 2024",
+        period: "Aug 2018 – Jun 2023",
+        org: "Vietnam Australia International School",
+        role: "Primary English Teaching Assistant",
         place: "Ho Chi Minh City",
+        status: "passed",
+        summary:
+          "The link between foreign teachers, students and parents; co-taught lessons and handled class management.",
+      },
+      {
+        period: "Jun 2024 – Dec 2024",
+        org: "Netcompany",
+        role: "Manual Test Specialist",
+        place: "Ho Chi Minh City, on-site",
+        status: "passed",
         summary: {
           text: "Functional and regression testing of web applications in Scrum teams; defects in Jira; API checks with Postman.",
           toConfirm: true,
         },
       },
       {
-        role: "English Teaching Assistant & Tutor",
-        company: "International schools & private tutoring",
-        period: "2016 – 2024",
-        place: "Ho Chi Minh City",
-        summary:
-          "Vietnam Australia International School (2018 – 2023) and EMG Education (2016 – 2018): worked alongside foreign teachers as the link between teachers, students and parents. Private one-to-one English tutoring throughout.",
+        period: "Jan 2025 – Present",
+        org: "Netcompany",
+        role: "Test Consultant",
+        place: "Vietnam, hybrid",
+        status: "running",
+        summary: {
+          text: "Requirements analysis, test design, functional, regression and API testing for European clients.",
+          toConfirm: true,
+        },
+      },
+    ],
+    note: "Alongside, private one-to-one English tutoring from 2016 to 2024.",
+  },
+  howIWork: {
+    kicker: "How I work",
+    title: "Understand, design, report",
+    aside: "Working towards Senior Tester, with deeper requirements analysis and test design.",
+    steps: [
+      {
+        title: "Understand",
+        text: {
+          text: "Read the requirements and user stories, and ask the open questions before development starts.",
+          toConfirm: true,
+        },
+      },
+      {
+        title: "Design",
+        text: {
+          text: "Turn them into test cases with techniques such as boundary values and decision tables, covering the cases that matter.",
+          toConfirm: true,
+        },
+      },
+      {
+        title: "Report",
+        text: {
+          text: "Log clear, reproducible defects and explain the test status to developers and clients in English.",
+          toConfirm: true,
+        },
       },
     ],
   },
   skills: {
-    title: "Skills",
-    intro:
-      "What I bring to a team: careful analysis, structured test design and clear communication in English.",
-    items: [
-      "Requirements analysis",
-      "Test design",
-      "Functional & regression testing",
-      "API testing (Postman)",
-      "SQL",
-      "Jira",
-      "Defect reporting",
-      "Client communication in English",
-      "Attention to detail",
+    kicker: "Skills",
+    title: "Toolbox",
+    groups: [
+      {
+        label: "Testing",
+        items: [
+          "Requirements analysis",
+          "Test design",
+          "Functional testing",
+          "Regression testing",
+          "API testing",
+          "Defect reporting",
+          "UAT support",
+        ],
+      },
+      { label: "Tools", items: ["Jira", "Postman", "SQL", "Figma", "ChatGPT"] },
+      {
+        label: "Languages",
+        items: ["English · IELTS 6.5", "Vietnamese · native", "Client communication"],
+      },
     ],
   },
-  education: {
-    title: "Education & Certifications",
-    intro:
-      "ISTQB Foundation certified, with a Business Analysis Foundation course and a B.A. in English Language (GPA 3.8/4) from Can Tho University.",
+  certifications: {
+    kicker: "Certifications",
+    title: "Certifications & education",
     items: [
       {
-        degree: "ISTQB Foundation Level",
-        provider: "Vietnamese Testing Board (VTB)",
+        name: "ISTQB Certified Tester Foundation Level",
+        issuer: "Vietnamese Testing Board",
         date: "Oct 2023",
         grade: "34/40",
       },
+      { name: "IELTS 6.5", issuer: "IDP Education", date: { text: "Dec 2023", toConfirm: true } },
+      { name: "Business Analysis Foundation", issuer: "BAC Vietnam", date: "Oct 2022" },
       {
-        degree: "IELTS 6.5",
-        provider: "IDP Education",
-        date: { text: "Dec 2023", toConfirm: true },
-      },
-      {
-        degree: "Business Analysis Foundation",
-        provider: "BAC Vietnam",
-        date: "Oct 2022",
-      },
-      {
-        degree: "Bachelor’s English Language",
-        provider: "Can Tho University",
+        name: "B.A. English Language",
+        issuer: "Can Tho University",
         date: "2012 – 2016",
         grade: "3.8/4",
       },
     ],
   },
   contact: {
-    title: "Get In Touch",
-    text: "Have a project that needs careful testing, or just want to say hi? My inbox is always open, and I’ll get back to you.",
-    action: "Say hello",
+    kicker: "Contact",
+    title: "Let’s talk.",
+    text: "Have a project that needs careful testing, or just want to say hi? My inbox is always open.",
+    interest: "Outside work, I enjoy exploring new places and singing karaoke with friends.",
   },
 };
