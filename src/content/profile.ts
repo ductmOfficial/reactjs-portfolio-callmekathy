@@ -6,18 +6,14 @@ export const profile = {
   siteName: "callmekathy",
   tagline: "I guarantee the quality of web.",
   email: "khuenguyen.official@gmail.com",
-  phoneNumber: "+84963891034",
-  location: "Ho Chi Minh, Vietnam",
   resumeUrl: "/resume.pdf",
   social: {
     facebook: "https://www.facebook.com/khue.nguyen.986227",
     linkedin: "https://www.linkedin.com/in/khue-nguyen-989493308",
-    skype: "live:.cid.27f618c9eb324a35",
   },
 } as const;
 
 export const hireMeMailto = `mailto:${profile.email}?subject=An amazing job opportunity inside!`;
-export const skypeChatUrl = `skype:${profile.social.skype}?chat`;
 
 export const hero = {
   intro:
