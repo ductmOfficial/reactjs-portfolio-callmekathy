@@ -5,11 +5,11 @@ import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import { alpha, styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { IconBrandFacebook, IconBrandLinkedin, IconBrandSkype } from "@tabler/icons-react";
+import { IconBrandFacebook, IconBrandLinkedin } from "@tabler/icons-react";
 
 import avatar from "../assets/avatar.jpg";
 import { useReveal } from "../components/useReveal";
-import { aboutMe, profile, skypeChatUrl } from "../content/profile";
+import { aboutMe, profile } from "../content/profile";
 
 import type { ReactNode } from "react";
 
@@ -123,10 +123,7 @@ export function AboutMe() {
                 About me
               </Typography>
               <Grid container spacing={2}>
-                <ContactItem label="Phone">{profile.phoneNumber}</ContactItem>
                 <ContactItem label="Email">{profile.email}</ContactItem>
-                <ContactItem label="Location">{profile.location}</ContactItem>
-                <ContactItem label="Skype">{profile.social.skype}</ContactItem>
                 <Grid size={{ xs: 12, sm: 6, lg: 12 }}>
                   <Typography variant="h5" component="h3" gutterBottom>
                     You can follow me also here:
@@ -147,9 +144,6 @@ export function AboutMe() {
                       sx={socialButton}
                     >
                       <IconBrandLinkedin stroke={1.5} size="1.3rem" />
-                    </IconButton>
-                    <IconButton href={skypeChatUrl} aria-label="Skype" sx={socialButton}>
-                      <IconBrandSkype stroke={1.5} size="1.3rem" />
                     </IconButton>
                   </Stack>
                 </Grid>

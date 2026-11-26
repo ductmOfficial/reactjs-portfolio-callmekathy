@@ -63,6 +63,18 @@ describe("App", () => {
     }
   });
 
+  it("publishes no phone number, street address or Skype contact", () => {
+    const { container } = renderPage();
+    const text = container.textContent;
+    const hrefs = [...container.querySelectorAll("a")].map(
+      (link) => link.getAttribute("href") ?? "",
+    );
+
+    expect(text).not.toMatch(/\+?\d[\d\s().-]{7,}\d/);
+    expect(text).not.toMatch(/skype|phone|location/i);
+    expect(hrefs.filter((href) => /^(skype|tel):/.test(href))).toEqual([]);
+  });
+
   it("gives the icon-only links an accessible name", () => {
     renderPage();
 
@@ -73,10 +85,6 @@ describe("App", () => {
     expect(screen.getByRole("link", { name: "LinkedIn" })).toHaveAttribute(
       "href",
       profile.social.linkedin,
-    );
-    expect(screen.getByRole("link", { name: "skype me" })).toHaveAttribute(
-      "href",
-      `skype:${profile.social.skype}?chat`,
     );
   });
 });

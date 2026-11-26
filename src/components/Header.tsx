@@ -2,13 +2,10 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ButtonBase from "@mui/material/ButtonBase";
-import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
-import Tooltip from "@mui/material/Tooltip";
-import { IconBrandSkype } from "@tabler/icons-react";
 
-import { profile, sections, skypeChatUrl } from "../content/profile";
+import { profile, sections } from "../content/profile";
 import { HideOnScroll } from "./HideOnScroll";
 import { Logo } from "./Logo";
 
@@ -42,16 +39,6 @@ export function Header() {
               ))}
             </Stack>
 
-            <Tooltip title="Skype me" arrow>
-              <IconButton
-                color="primary"
-                aria-label="skype me"
-                href={skypeChatUrl}
-                sx={{ bgcolor: "background.default" }}
-              >
-                <IconBrandSkype stroke={1.5} size="1.3rem" />
-              </IconButton>
-            </Tooltip>
             <Button variant="contained" color="primary" target="_blank" href={profile.resumeUrl}>
               Download CV
             </Button>
