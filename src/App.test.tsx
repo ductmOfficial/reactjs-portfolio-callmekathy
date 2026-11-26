@@ -1,27 +1,36 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import { App } from "./App";
-import { profile } from "./content";
-import { en } from "./content/en";
+import { content, ContentContext, profile } from "./content";
 import { theme } from "./theme";
+
+import type { Content } from "./content";
+
+let current: Content = content.en;
 
 function renderPage() {
   return render(
     <ThemeProvider theme={theme}>
-      <App />
+      <ContentContext value={current}>
+        <App />
+      </ContentContext>
     </ThemeProvider>,
   );
 }
 
-describe("App", () => {
+describe.each(Object.values(content))("App in $lang", (en) => {
+  beforeEach(() => {
+    current = en;
+  });
+
   it("names the person in the only h1", () => {
     renderPage();
 
     const h1 = screen.getAllByRole("heading", { level: 1 });
     expect(h1).toHaveLength(1);
-    expect(h1[0]).toHaveTextContent(`${profile.firstName} ${profile.lastName}`);
+    expect(h1[0]).toHaveTextContent(en.name);
   });
 
   it("renders every section the navigation links to", () => {

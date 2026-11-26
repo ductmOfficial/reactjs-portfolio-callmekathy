@@ -63,7 +63,7 @@ function ContactItem({ label, children }: { label: string; children: ReactNode }
 }
 
 export function AboutMe() {
-  const { about, labels } = useContent();
+  const { name, about, labels } = useContent();
   const revealRef = useReveal<HTMLElement>();
 
   return (
@@ -93,12 +93,7 @@ export function AboutMe() {
                   }}
                 >
                   <Picture>
-                    <img
-                      src={avatar}
-                      alt={`${profile.firstName} ${profile.lastName}`}
-                      width={800}
-                      height={800}
-                    />
+                    <img src={avatar} alt={name} width={800} height={800} />
                   </Picture>
                 </Box>
               </Box>

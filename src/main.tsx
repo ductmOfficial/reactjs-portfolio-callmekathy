@@ -9,6 +9,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import { App } from "./App";
+import { LanguageProvider } from "./components/LanguageProvider";
 import { theme } from "./theme";
 
 const root = document.getElementById("root");
@@ -18,7 +19,9 @@ createRoot(root).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
     </ThemeProvider>
   </StrictMode>,
 );

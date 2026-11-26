@@ -2,6 +2,7 @@ import type { Content } from "./types";
 
 export const en: Content = {
   lang: "en",
+  name: "Khue Nguyen",
   nav: [
     { id: "about-me", title: "About me" },
     { id: "experience", title: "Experience" },
@@ -17,6 +18,7 @@ export const en: Content = {
     grade: "Grade",
     toConfirm: "[to confirm]",
     builtBy: "Designed & Built by",
+    language: "Language",
   },
   hero: {
     greeting: "Hi, my name is",

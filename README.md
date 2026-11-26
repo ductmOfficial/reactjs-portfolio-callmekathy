@@ -1,7 +1,7 @@
 # callmekathy
 
-One-page portfolio for Khue Nguyen, a manual tester: who she is, her skills, education and
-certifications, and how to get in touch.
+One-page portfolio for Khue Nguyen, Test Consultant at Netcompany, in English and Vietnamese:
+who she is, her experience, skills, education and certifications, and how to get in touch.
 
 **Live:** https://callmekathy.vercel.app
 
@@ -23,8 +23,9 @@ scripts/cv/            CV text in both languages and the script that renders the
 e2e/                   Playwright tests against the production build
 ```
 
-To change what the page says, edit `src/content/en.ts` (shared facts such as the email are in
-`src/content/profile.ts`). To change the CV, edit `scripts/cv/data.js` and run `pnpm cv`.
+To change what the page says, edit `src/content/en.ts` and `src/content/vi.ts` (shared facts such
+as the email are in `src/content/profile.ts`). The EN/VI switch in the header changes the copy,
+the page `lang` and the CV link; `?lang=vi` opens the Vietnamese page directly. To change the CV, edit `scripts/cv/data.js` and run `pnpm cv`.
 
 ## Setup
 

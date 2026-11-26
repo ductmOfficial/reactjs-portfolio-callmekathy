@@ -2,6 +2,8 @@
 // "[to confirm]" mark until the flag is removed.
 export type Line = string | { text: string; toConfirm: true };
 
+export type Language = "en" | "vi";
+
 export type SectionId = "about-me" | "experience" | "skills" | "education" | "get-in-touch";
 
 export interface ExperienceItem {
@@ -20,7 +22,8 @@ export interface EducationItem {
 }
 
 export interface Content {
-  lang: "en" | "vi";
+  lang: Language;
+  name: string;
   nav: { id: SectionId; title: string }[];
   resumeUrl: string;
   labels: {
@@ -30,6 +33,7 @@ export interface Content {
     grade: string;
     toConfirm: string;
     builtBy: string;
+    language: string;
   };
   hero: { greeting: string; tagline: string; intro: string; action: string };
   about: { title: string; paragraphs: Line[]; interest: string };
