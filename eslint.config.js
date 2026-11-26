@@ -37,6 +37,14 @@ export default defineConfig(
     },
   },
 
+  // Node scripts that also pass callbacks to the browser through Playwright.
+  {
+    files: ["scripts/**/*.js"],
+    languageOptions: {
+      globals: { ...globals.node, ...globals.browser },
+    },
+  },
+
   {
     files: ["**/*.js"],
     extends: [tseslint.configs.disableTypeChecked],
