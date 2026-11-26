@@ -21,7 +21,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",
-    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build"
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build",
+    "cv": "node scripts/cv/build.js"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.1",

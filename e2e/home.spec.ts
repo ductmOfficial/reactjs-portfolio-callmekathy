@@ -77,11 +77,20 @@ test("the menu jumps to each section", async ({ page, isMobile }) => {
   await expect(page.getByRole("link", { name: "Say hello" })).toBeInViewport();
 });
 
-test("serves the CV as a PDF", async ({ request }) => {
-  const response = await request.get("/resume.pdf");
+for (const file of ["resume-en.pdf", "resume-vi.pdf"]) {
+  test(`serves ${file}`, async ({ request }) => {
+    const response = await request.get(`/${file}`);
 
-  expect(response.status()).toBe(200);
-  expect(response.headers()["content-type"]).toBe("application/pdf");
+    expect(response.status()).toBe(200);
+    expect(response.headers()["content-type"]).toBe("application/pdf");
+  });
+}
+
+test("the CV buttons point at a PDF that exists", async ({ page, request }) => {
+  const href = await page.getByRole("link", { name: "Download CV" }).first().getAttribute("href");
+
+  expect(href).toBe("/resume-en.pdf");
+  expect((await request.get(href ?? "")).status()).toBe(200);
 });
 
 test("fits the viewport without horizontal scrolling", async ({ page }) => {

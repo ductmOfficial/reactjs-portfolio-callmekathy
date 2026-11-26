@@ -9,7 +9,7 @@ export const en: Content = {
     { id: "education", title: "Education & Certifications" },
     { id: "get-in-touch", title: "Contact" },
   ],
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/resume-en.pdf",
   labels: {
     downloadCv: "Download CV",
     email: "Email",

@@ -18,12 +18,13 @@ src/
   components/          header, logo and the scroll reveal hook
   theme/               MUI theme: brand palette and the custom typography variants
   assets/              avatar photo
-public/                resume.pdf, favicon, robots.txt (served as is)
+public/                resume-en.pdf, resume-vi.pdf, favicon, robots.txt (served as is)
+scripts/cv/            CV text in both languages and the script that renders the PDFs
 e2e/                   Playwright tests against the production build
 ```
 
-To change what the page says, edit `src/content/profile.ts`. To replace the CV, overwrite
-`public/resume.pdf`.
+To change what the page says, edit `src/content/en.ts` (shared facts such as the email are in
+`src/content/profile.ts`). To change the CV, edit `scripts/cv/data.js` and run `pnpm cv`.
 
 ## Setup
 
@@ -53,6 +54,18 @@ pnpm dev                 # http://localhost:5173 with hot reload
 pnpm build               # production build in dist/
 pnpm preview             # serve dist/ on http://localhost:4173
 ```
+
+## CV
+
+The CV is generated, not drawn by hand. `scripts/cv/data.js` holds the text in English and
+Vietnamese; `pnpm cv` renders each language to an A4 PDF in `public/` with Chrome and the same
+self-hosted Roboto as the site, and fails if a CV runs past one page.
+
+```bash
+CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" pnpm cv
+```
+
+Commit the PDFs with the data change. Without `CHROME_PATH` the script uses Playwright’s Chromium.
 
 ## Testing
 
@@ -90,6 +103,7 @@ Without `CHROME_PATH`, Playwright uses its own Chromium: install it once with
 | `pnpm lighthouse`    | Lighthouse CI: scores and budgets from `lighthouserc.json` |
 | `pnpm format`        | Prettier write                                             |
 | `pnpm format:check`  | Prettier check                                             |
+| `pnpm cv`            | Render `public/resume-en.pdf` and `public/resume-vi.pdf`   |
 | `pnpm check`         | Everything the `Verify` job runs                           |
 
 ## CI
@@ -130,8 +144,8 @@ No environment variables are needed.
 
 ## Known issues
 
-- `public/resume.pdf` still lists a phone number and a Skype ID, which the page no longer shows.
-  The PDF is an image export, so it needs a new version from its source.
+- Lines marked `[to confirm]` on the page and in the CV are drafts Khue has not confirmed yet.
+  Remove `toConfirm` from a line once it is confirmed, then run `pnpm cv` for the PDFs.
 
 ## Progress
 
