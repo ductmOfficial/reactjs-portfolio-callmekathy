@@ -1,3 +1,5 @@
+export const STORAGE__THEME_MODE = 'THEME_MODE';
+
 export const THEME__MODE = {
   LIGHT: 'light',
   DARK: 'dark',
