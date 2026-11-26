@@ -57,6 +57,8 @@ describe("useReveal", () => {
     const element = screen.getByText("content");
 
     expect(element.style.opacity).toBe("0");
+    expect(element).toHaveAttribute("data-pending");
+    expect(element.style.getPropertyValue("--reveal-delay")).toBe("300ms");
 
     observerCallback?.([{ isIntersecting: false }]);
     expect(element.style.opacity).toBe("0");
@@ -64,6 +66,7 @@ describe("useReveal", () => {
     observerCallback?.([{ isIntersecting: true }]);
     expect(element.style.opacity).toBe("1");
     expect(element.style.transform).toBe("none");
+    expect(element).not.toHaveAttribute("data-pending");
     expect(element.style.transition).toContain("300ms");
     expect(disconnect).toHaveBeenCalled();
   });

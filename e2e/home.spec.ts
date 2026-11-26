@@ -200,3 +200,27 @@ test.describe("on a system set to dark", () => {
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   });
 });
+
+test.describe("motion", () => {
+  const ticker = (page: Page) => page.locator(".bg-board dd [aria-hidden='true']");
+
+  test("stats count up to their values and the career path draws in", async ({ page }) => {
+    await scrollThroughPage(page);
+
+    await expect(ticker(page)).toHaveText(["2+ yrs", "34/40", "6.5", "8 yrs"]);
+    const draws = page.locator("#experience [data-draw]");
+    await expect(draws).toHaveCount(4);
+    for (const draw of await draws.all()) {
+      await expect(draw).toHaveCSS("transform", "none");
+    }
+  });
+
+  test("nothing moves when motion is reduced", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.reload();
+
+    await expect(ticker(page)).toHaveText(["2+ yrs", "34/40", "6.5", "8 yrs"]);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveCSS("animation-name", "none");
+    await expect(page.locator("[data-pulse]")).toHaveCSS("position", "static");
+  });
+});

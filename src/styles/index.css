@@ -116,3 +116,84 @@
 @utility tabular {
   font-variant-numeric: tabular-nums;
 }
+
+/* ── Motion ──────────────────────────────────────────────────────────────
+   Everything below runs only without reduced motion. The hero rise moves but never hides, so
+   the headline still counts as the Largest Contentful Paint at first paint. */
+@keyframes rise {
+  from {
+    transform: translateY(14px);
+  }
+}
+@keyframes pulse-ring {
+  from {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  to {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-rise] {
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 80ms);
+  }
+
+  /* The status dot sends out a slow ring. */
+  [data-pulse] {
+    position: relative;
+  }
+  [data-pulse]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: var(--color-accent);
+    animation: pulse-ring 2.4s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+  }
+
+  /* Career path: once a stop is revealed its dot pops in, then its line draws left to right. */
+  [data-dot] {
+    transition: transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
+    transition-delay: calc(var(--reveal-delay, 0ms) + 150ms);
+  }
+  [data-draw] {
+    transform-origin: left;
+    transition: transform 0.9s cubic-bezier(0.6, 0, 0.2, 1);
+    transition-delay: calc(var(--reveal-delay, 0ms) + 250ms);
+  }
+  [data-pending] [data-dot] {
+    transform: scale(0);
+  }
+  [data-pending] [data-draw] {
+    transform: scaleX(0);
+  }
+
+  /* Switching the theme fades colors instead of snapping. */
+  .theme-fade,
+  .theme-fade * {
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease !important;
+  }
+}
+
+/* An underline that slides in under menu and footer links on hover and keyboard focus. */
+@utility link-slide {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    transition: background-size 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+}

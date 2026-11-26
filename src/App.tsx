@@ -9,7 +9,7 @@ import { HowIWork } from "./sections/HowIWork";
 import { Skills } from "./sections/Skills";
 import { Stats } from "./sections/Stats";
 
-const footerLink = "text-muted no-underline hover:text-ink";
+const footerLink = "link-slide text-muted no-underline hover:text-ink";
 
 export function App() {
   const { labels, resumeUrl } = useContent();

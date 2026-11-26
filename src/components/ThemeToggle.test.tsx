@@ -42,6 +42,36 @@ describe("ThemeToggle", () => {
     expect(window.localStorage.getItem("theme")).toBe("light");
   });
 
+  it("fades colors for the length of one switch", () => {
+    vi.useFakeTimers();
+    vi.stubGlobal(
+      "matchMedia",
+      vi.fn(() => ({ matches: false })),
+    );
+    render(<ThemeToggle />);
+
+    fireEvent.click(button());
+    expect(document.documentElement).toHaveClass("theme-fade");
+
+    vi.advanceTimersByTime(300);
+    expect(document.documentElement).not.toHaveClass("theme-fade");
+    vi.useRealTimers();
+    vi.unstubAllGlobals();
+  });
+
+  it("switches without a fade when motion is reduced", () => {
+    vi.stubGlobal(
+      "matchMedia",
+      vi.fn(() => ({ matches: true })),
+    );
+    render(<ThemeToggle />);
+
+    fireEvent.click(button());
+    expect(document.documentElement).not.toHaveClass("theme-fade");
+    expect(document.documentElement.dataset.theme).toBe("dark");
+    vi.unstubAllGlobals();
+  });
+
   it("still switches when storage is blocked", () => {
     vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       throw new Error("blocked");

@@ -10,7 +10,10 @@ function Group({ label, items, index }: { label: string; items: string[]; index:
       <h3 className="kicker text-ink">{label}</h3>
       <ul className="flex flex-wrap gap-2">
         {items.map((item) => (
-          <li key={item} className="border border-line px-2.5 py-1 font-mono text-[13px]">
+          <li
+            key={item}
+            className="border border-line px-2.5 py-1 font-mono text-[13px] hover:border-muted motion-safe:transition-colors"
+          >
             {item}
           </li>
         ))}

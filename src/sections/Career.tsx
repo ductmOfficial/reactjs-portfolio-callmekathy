@@ -14,9 +14,10 @@ function Stop({ item, index }: { item: CareerItem; index: number }) {
     <li ref={ref} className="flex flex-col gap-2">
       <div aria-hidden="true" className="mb-3 flex items-center">
         <span
+          data-dot=""
           className={`size-3 shrink-0 rounded-full border-2 ${running ? "border-accent bg-accent" : "border-muted bg-bg"}`}
         />
-        <span className={`h-0.5 flex-1 ${running ? "bg-accent" : "bg-line"}`} />
+        <span data-draw="" className={`h-0.5 flex-1 ${running ? "bg-accent" : "bg-line"}`} />
       </div>
       <p className="tabular font-mono text-[13px] text-muted">{item.period}</p>
       <h3 className="text-lg leading-snug font-semibold">{item.org}</h3>

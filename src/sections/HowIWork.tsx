@@ -7,7 +7,10 @@ function Step({ n, title, children }: { n: number; title: string; children: Reac
   const ref = useReveal<HTMLLIElement>(n * 100);
 
   return (
-    <li ref={ref} className="flex flex-col gap-3 border border-line bg-surface p-6">
+    <li
+      ref={ref}
+      className="flex flex-col gap-3 border border-line bg-surface p-6 hover:border-pastel motion-safe:transition-colors"
+    >
       <span className="font-mono text-sm font-medium text-accent">
         {String(n).padStart(2, "0")}
       </span>

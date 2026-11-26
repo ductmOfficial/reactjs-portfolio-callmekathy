@@ -28,7 +28,7 @@ export function Header() {
             <ul className="flex gap-6 text-[15px]">
               {nav.map(({ id, title }) => (
                 <li key={id}>
-                  <a href={`#${id}`} className="text-ink no-underline hover:text-accent">
+                  <a href={`#${id}`} className="link-slide text-ink no-underline hover:text-accent">
                     {title}
                   </a>
                 </li>
