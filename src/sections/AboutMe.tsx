@@ -81,7 +81,14 @@ export function AboutMe() {
                   mb: { xs: 4, lg: 0 },
                 }}
               >
-                <Box sx={{ position: "relative", maxWidth: { xs: 400, lg: 320 } }}>
+                {/* The outline sits 20px right of the photo; leave room for it on narrow screens. */}
+                <Box
+                  sx={{
+                    position: "relative",
+                    maxWidth: { xs: 400, lg: 320 },
+                    mr: { xs: "20px", lg: 0 },
+                  }}
+                >
                   <Picture>
                     <img
                       src={avatar}

@@ -36,7 +36,7 @@ export function App() {
         <Box component="footer" sx={{ py: 2, textAlign: "center" }}>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
             Designed & Built by{" "}
-            <Link href={credit.url} target="_blank" underline="none">
+            <Link href={credit.url} target="_blank" underline="always">
               {credit.name}
             </Link>
           </Typography>
