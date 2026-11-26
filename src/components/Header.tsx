@@ -7,6 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 
 import { useContent } from "../content";
 import { HideOnScroll } from "./HideOnScroll";
+import { LanguageSwitch } from "./LanguageSwitch";
 import { Logo } from "./Logo";
 
 export function Header() {
@@ -41,6 +42,7 @@ export function Header() {
               ))}
             </Stack>
 
+            <LanguageSwitch />
             <Button variant="contained" color="primary" target="_blank" href={resumeUrl}>
               {labels.downloadCv}
             </Button>

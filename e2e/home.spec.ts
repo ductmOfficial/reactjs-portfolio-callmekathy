@@ -14,6 +14,13 @@ async function scrollThroughPage(page: Page) {
   await page.waitForTimeout(800);
 }
 
+// Sections fade in as they scroll into view, and axe measures contrast on whatever opacity an
+// element has at that moment. With reduced motion every section is fully drawn from the start.
+async function settleForAxe(page: Page) {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.reload();
+}
+
 // Fails any test that logs a console error or throws in the page.
 const test = base.extend<{ pageErrors: string[] }>({
   pageErrors: [
@@ -102,11 +109,53 @@ test("fits the viewport without horizontal scrolling", async ({ page }) => {
 });
 
 test("has no detectable accessibility violations", async ({ page }) => {
-  await scrollThroughPage(page);
+  await settleForAxe(page);
 
   const results = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
     .analyze();
 
   expect(results.violations.map(({ id, nodes }) => `${id} (${String(nodes.length)})`)).toEqual([]);
+});
+
+test.describe("in Vietnamese", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.getByRole("button", { name: "VI Tiếng Việt" }).click();
+  });
+
+  test("shows the Vietnamese page and CV", async ({ page }) => {
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nguyễn Khuê");
+    await expect(page.locator("html")).toHaveAttribute("lang", "vi");
+    await expect(page).toHaveURL(/\?lang=vi/);
+    await expect(page.getByRole("link", { name: "Tải CV" }).first()).toHaveAttribute(
+      "href",
+      "/resume-vi.pdf",
+    );
+  });
+
+  test("keeps the language after a reload", async ({ page }) => {
+    await page.reload();
+
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nguyễn Khuê");
+  });
+
+  test("fits the viewport without horizontal scrolling", async ({ page }) => {
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+
+    expect(overflow).toBe(0);
+  });
+
+  test("has no detectable accessibility violations", async ({ page }) => {
+    await settleForAxe(page);
+
+    const results = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
+      .analyze();
+
+    expect(results.violations.map(({ id, nodes }) => `${id} (${String(nodes.length)})`)).toEqual(
+      [],
+    );
+  });
 });

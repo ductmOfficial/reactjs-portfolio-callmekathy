@@ -4,10 +4,10 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import { contactMailto, profile, useContent } from "../content";
+import { contactMailto, useContent } from "../content";
 
 export function Hero() {
-  const { hero, labels, resumeUrl } = useContent();
+  const { name, hero, labels, resumeUrl } = useContent();
 
   return (
     <Box component="section" id="hero" sx={{ bgcolor: "background.paper", py: 8 }}>
@@ -15,7 +15,7 @@ export function Hero() {
         <Box sx={{ maxWidth: 1000 }}>
           <Typography sx={{ color: "primary.main" }}>{hero.greeting}</Typography>
           <Typography variant="largeHeading" component="h1" sx={{ color: "text.primary" }}>
-            {`${profile.firstName} ${profile.lastName}`}
+            {name}
           </Typography>
           <Typography
             variant="mediumHeading"
