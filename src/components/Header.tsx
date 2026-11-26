@@ -1,54 +1,55 @@
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import ButtonBase from "@mui/material/ButtonBase";
-import Stack from "@mui/material/Stack";
-import Toolbar from "@mui/material/Toolbar";
-
 import { useContent } from "../content";
-import { HideOnScroll } from "./HideOnScroll";
 import { LanguageSwitch } from "./LanguageSwitch";
-import { Logo } from "./Logo";
+import { Container } from "./layout";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
-  const { nav, labels, resumeUrl } = useContent();
+  const { name, nav, labels, resumeUrl } = useContent();
+  const initials = name
+    .split(" ")
+    .map((part) => part[0])
+    .join("");
 
   return (
-    <HideOnScroll>
-      <AppBar
-        elevation={0}
-        position="fixed"
-        color="default"
-        sx={{ bgcolor: "background.paper", color: "text.primary" }}
-      >
-        <Toolbar>
-          <Box sx={{ flexGrow: 1, display: "flex" }}>
-            <ButtonBase disableRipple href="/">
-              <Logo />
-            </ButtonBase>
-          </Box>
-
-          <Box sx={{ flexGrow: 0, display: "flex", gap: 1.5 }}>
-            <Stack
-              component="nav"
-              direction="row"
-              spacing={1}
-              sx={{ alignItems: "center", ml: 3, display: { xs: "none", lg: "flex" } }}
+    <header className="sticky top-0 z-20 border-b border-line bg-bg/90 backdrop-blur">
+      <Container className="flex h-16 items-center justify-between gap-4">
+        <div className="flex items-center gap-8">
+          <a href="#top" className="flex items-center gap-2.5 text-ink no-underline">
+            <span
+              aria-hidden="true"
+              className="inline-flex size-9 items-center justify-center bg-ink font-mono text-[13px] font-medium text-bg"
             >
+              {initials}
+            </span>
+            <span className="hidden font-semibold sm:inline">{name}</span>
+            <span className="sr-only sm:hidden">{name}</span>
+          </a>
+          <nav aria-label={labels.menu} className="hidden lg:block">
+            <ul className="flex gap-6 text-[15px]">
               {nav.map(({ id, title }) => (
-                <Button key={id} href={`#${id}`} sx={{ color: "inherit", whiteSpace: "nowrap" }}>
-                  {title}
-                </Button>
+                <li key={id}>
+                  <a href={`#${id}`} className="text-ink no-underline hover:text-accent">
+                    {title}
+                  </a>
+                </li>
               ))}
-            </Stack>
-
-            <LanguageSwitch />
-            <Button variant="contained" color="primary" target="_blank" href={resumeUrl}>
-              {labels.downloadCv}
-            </Button>
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </HideOnScroll>
+            </ul>
+          </nav>
+        </div>
+        <div className="flex items-center gap-2">
+          <LanguageSwitch />
+          <ThemeToggle />
+          <a
+            href={resumeUrl}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex h-10 items-center border border-ink bg-ink px-3.5 font-mono text-[13px] font-medium text-bg no-underline hover:border-accent hover:bg-accent hover:text-on-accent"
+          >
+            {labels.cv}
+            <span className="sr-only"> · {labels.downloadCv}</span>
+          </a>
+        </div>
+      </Container>
+    </header>
   );
 }

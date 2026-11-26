@@ -1,43 +1,34 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
+import { Button } from "@ductmofficial/sen-ui";
 
-import { useContent, useLanguage } from "../content";
+import { languages, useContent, useLanguage } from "../content";
 
 const names = { en: "English", vi: "Tiếng Việt" } as const;
-
-// Hidden from sight but read out, so the button's name starts with the code it shows.
-const visuallyHidden = {
-  position: "absolute",
-  width: "1px",
-  height: "1px",
-  overflow: "hidden",
-  clip: "rect(0 0 0 0)",
-  whiteSpace: "nowrap",
-} as const;
 
 export function LanguageSwitch() {
   const { lang, setLang } = useLanguage();
   const { labels } = useContent();
 
   return (
-    <ButtonGroup size="small" aria-label={labels.language} sx={{ alignSelf: "center" }}>
-      {(Object.keys(names) as (keyof typeof names)[]).map((option) => (
+    <div role="group" aria-label={labels.language} className="flex">
+      {languages.map((option) => (
         <Button
           key={option}
+          variant="secondary"
           lang={option}
           aria-pressed={lang === option}
-          variant={lang === option ? "contained" : "outlined"}
           onClick={() => {
             setLang(option);
           }}
+          className={`-ml-px size-10 p-0 font-mono text-[13px] font-medium uppercase first:ml-0 ${
+            lang === option
+              ? "relative z-10 border-ink bg-ink text-bg hover:bg-ink"
+              : "border-line bg-transparent text-muted hover:text-ink"
+          }`}
         >
-          {option.toUpperCase()}
-          <Box component="span" sx={visuallyHidden}>
-            {` ${names[option]}`}
-          </Box>
+          {`${option.toUpperCase()} `}
+          <span className="sr-only">{names[option]}</span>
         </Button>
       ))}
-    </ButtonGroup>
+    </div>
   );
 }

@@ -1,5 +1,3 @@
-import Box from "@mui/material/Box";
-
 import { useContent } from "../content";
 
 import type { Line } from "../content";
@@ -13,12 +11,9 @@ export function LineText({ line }: { line: Line }) {
   return (
     <>
       {line.text}{" "}
-      <Box
-        component="span"
-        sx={{ color: "text.secondary", fontSize: "0.85em", whiteSpace: "nowrap" }}
-      >
+      <span className="font-mono text-[0.8em] whitespace-nowrap text-muted">
         {labels.toConfirm}
-      </Box>
+      </span>
     </>
   );
 }

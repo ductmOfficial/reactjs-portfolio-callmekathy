@@ -1,0 +1,118 @@
+/* Sen UI sits above Tailwind's base styles and below its utilities, so a utility class on a
+   Sen UI component still wins. Declared first: the first statement fixes the layer order. */
+@layer theme, base, sen, components, utilities;
+
+@import "tailwindcss";
+@import "@ductmofficial/sen-ui/styles.css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Warm paper, near-black ink and one rose accent; the dark theme mirrors it. Every text pair
+   reaches 4.5:1 or more (light: ink 15.8, muted 6.6, accent 4.8; dark: 14.7, 7.8, 8.3).
+   The inline script in index.html always sets data-theme on <html>, so Sen UI's own
+   prefers-color-scheme block never decides the colors. These rules are unlayered and override
+   the defaults in the `sen` layer. */
+:root,
+[data-theme="light"] {
+  --sen-color-bg: #f8f4f1;
+  --sen-color-surface: #ffffff;
+  --sen-color-surface-hover: #f8f4f1;
+  --sen-color-fg: #1d1a1b;
+  --sen-color-fg-muted: #5c5557;
+  --sen-color-border: #5c5557;
+  --sen-color-border-subtle: #e4dcd8;
+  --sen-color-accent: #ab5049;
+  --sen-color-accent-hover: #8e3b35;
+  --sen-color-accent-text: #ab5049;
+  --sen-color-on-accent: #f8f4f1;
+  --sen-focus-ring-color: #ab5049;
+  --accent-strong: #8e3b35;
+  --blush: #f8e3e0;
+  --pastel: #df8c86;
+  --board: #231e20;
+  --board-ink: #c9c0c2;
+  --board-fig: #eba49e;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --sen-color-bg: #1a1718;
+  --sen-color-surface: #221e20;
+  --sen-color-surface-hover: #1a1718;
+  --sen-color-fg: #efe8e6;
+  --sen-color-fg-muted: #b3a9ab;
+  --sen-color-border: #b3a9ab;
+  --sen-color-border-subtle: #3a3335;
+  --sen-color-accent: #ec9c95;
+  --sen-color-accent-hover: #f4bcb6;
+  --sen-color-accent-text: #ec9c95;
+  --sen-color-on-accent: #1a1718;
+  --sen-focus-ring-color: #ec9c95;
+  --accent-strong: #f4bcb6;
+  --blush: #3f2826;
+  --pastel: #b8645e;
+  --board: #0f0d0e;
+  --board-ink: #b3a9ab;
+  --board-fig: #ec9c95;
+  color-scheme: dark;
+}
+/* Square corners and a 3px focus offset everywhere, Sen UI components included. */
+:root {
+  --sen-radius-sm: 0;
+  --sen-radius-md: 0;
+  --sen-radius-lg: 0;
+  --sen-focus-ring-offset: 3px;
+}
+
+@theme inline {
+  --color-bg: var(--sen-color-bg);
+  --color-surface: var(--sen-color-surface);
+  --color-ink: var(--sen-color-fg);
+  --color-muted: var(--sen-color-fg-muted);
+  --color-line: var(--sen-color-border-subtle);
+  --color-accent: var(--sen-color-accent);
+  --color-on-accent: var(--sen-color-on-accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-blush: var(--blush);
+  --color-pastel: var(--pastel);
+  --color-board: var(--board);
+  --color-board-ink: var(--board-ink);
+  --color-board-fig: var(--board-fig);
+  --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+  p,
+  li {
+    overflow-wrap: break-word;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@utility kicker {
+  @apply font-mono text-xs font-medium uppercase tracking-[0.08em] text-muted;
+}
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
