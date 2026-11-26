@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import { buttonStyles, Container } from "../components/layout";
 import { profile, useContent } from "../content";
 
@@ -8,15 +10,33 @@ export function Hero() {
     <section id="top" className="border-b border-line">
       <Container className="grid items-center gap-12 pt-16 pb-20 sm:pt-24 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
         <div className="flex flex-col gap-7">
-          <p className="kicker flex items-center gap-2.5">
-            <span aria-hidden="true" className="inline-block size-2 rounded-full bg-accent" />
+          <p
+            data-rise=""
+            style={{ "--i": 0 } as CSSProperties}
+            className="kicker flex items-center gap-2.5"
+          >
+            <span
+              aria-hidden="true"
+              data-pulse=""
+              className="inline-block size-2 rounded-full bg-accent"
+            />
             {hero.status}
           </p>
-          <h1 className="max-w-[16ch] text-[clamp(38px,6vw,72px)] leading-[1.04] font-semibold tracking-[-0.02em]">
+          <h1
+            data-rise=""
+            style={{ "--i": 1 } as CSSProperties}
+            className="max-w-[16ch] text-[clamp(38px,6vw,72px)] leading-[1.04] font-semibold tracking-[-0.02em]"
+          >
             {hero.tagline}
           </h1>
-          <p className="max-w-[60ch] text-lg leading-relaxed text-muted">{hero.intro}</p>
-          <div className="flex flex-wrap gap-3">
+          <p
+            data-rise=""
+            style={{ "--i": 2 } as CSSProperties}
+            className="max-w-[60ch] text-lg leading-relaxed text-muted"
+          >
+            {hero.intro}
+          </p>
+          <div data-rise="" style={{ "--i": 3 } as CSSProperties} className="flex flex-wrap gap-3">
             <a href={resumeUrl} target="_blank" rel="noopener" className={buttonStyles.primary}>
               {labels.downloadCv}
               <span aria-hidden="true">↓</span>
@@ -35,7 +55,11 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <div className="mx-auto w-full max-w-[300px] pr-4 pb-4 lg:max-w-[340px]">
+        <div
+          data-rise=""
+          style={{ "--i": 4 } as CSSProperties}
+          className="mx-auto w-full max-w-[300px] pr-4 pb-4 lg:max-w-[340px]"
+        >
           <div className="relative">
             <div
               aria-hidden="true"

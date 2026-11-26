@@ -50,7 +50,7 @@ describe.each(Object.values(content))("App in $lang", (c) => {
     renderPage();
 
     for (const stat of c.stats) {
-      expect(screen.getByText(stat.value)).toBeInTheDocument();
+      expect(screen.getByText(stat.value, { selector: ".sr-only" })).toBeInTheDocument();
     }
     for (const item of c.career.items) {
       expect(screen.getAllByText(item.role).length).toBeGreaterThan(0);

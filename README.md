@@ -12,6 +12,10 @@ Vitest and Testing Library · Playwright with axe · Lighthouse CI · pnpm on No
 Light and dark themes: the page follows the system setting on a first visit, and the toggle in the
 header remembers the choice.
 
+Motion: the hero rises in on load, the status dot pulses, the stats count up, sections fade in as
+they scroll into view and the career path draws its line. Every effect is off when the visitor
+prefers reduced motion.
+
 ## Structure
 
 ```text
