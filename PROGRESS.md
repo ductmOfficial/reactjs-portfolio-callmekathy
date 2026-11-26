@@ -26,6 +26,7 @@ adds CI, which first ran on `main` right after it merged); steps 4 and 5 merged 
 | 11  | Vietnamese page with an EN/VI switch                                                           | #11 | ✅     |
 | 12  | Facebook link removed; LinkedIn and email remain                                               | #12 | ✅     |
 | 13  | Redesign on Tailwind 4 and Sen UI: stats, career path, how I work, dark theme                  | #13 | ✅     |
+| 14  | CV in the site’s fonts and colors                                                              | #14 | ✅     |
 
 All merged on 2026-11-26. The site is live at https://callmekathy.vercel.app.
 

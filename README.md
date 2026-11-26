@@ -62,7 +62,8 @@ pnpm preview             # serve dist/ on http://localhost:4173
 
 The CV is generated, not drawn by hand. `scripts/cv/data.js` holds the text in English and
 Vietnamese; `pnpm cv` renders each language to an A4 PDF in `public/` with Chrome and the same
-self-hosted Roboto as the site, and fails if a CV runs past one page.
+self-hosted Be Vietnam Pro and IBM Plex Mono as the site, in the same colors, and fails if a CV
+runs past one page.
 
 ```bash
 CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" pnpm cv

@@ -12,10 +12,13 @@ import { chromium } from "@playwright/test";
 import { cv, shared } from "./data.js";
 
 const root = fileURLToPath(new URL("../..", import.meta.url));
-const fontCss = [400, 500, 700].map(
-  (weight) =>
-    pathToFileURL(join(root, `node_modules/@fontsource/roboto/${String(weight)}.css`)).href,
-);
+// The same self-hosted fonts as the site.
+const fontCss = [
+  "be-vietnam-pro/400.css",
+  "be-vietnam-pro/500.css",
+  "be-vietnam-pro/600.css",
+  "ibm-plex-mono/400.css",
+].map((file) => pathToFileURL(join(root, "node_modules/@fontsource", file)).href);
 
 // A4 at 96 dpi.
 const PAGE_HEIGHT_PX = 1123;
@@ -41,28 +44,30 @@ ${fontCss.map((href) => `<link rel="stylesheet" href="${href}" />`).join("\n")}
 <style>
   @page { size: A4; margin: 0; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-family: Roboto, sans-serif; font-size: 9.6pt; color: #1f2a30; line-height: 1.38; }
+  /* The site's palette and type: ink #1d1a1b, muted #5c5557, rose #ab5049, line #e4dcd8. */
+  html { font-family: "Be Vietnam Pro", sans-serif; font-size: 9.2pt; color: #1d1a1b; line-height: 1.42; }
   body { width: 210mm; padding: 13mm 13mm 10mm; }
   .page { display: grid; grid-template-columns: 1fr 62mm; column-gap: 9mm; }
-  header { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 62mm; column-gap: 9mm; margin-bottom: 7mm; }
-  h1 { font-size: 30pt; font-weight: 700; color: #ab5049; line-height: 1.05; }
-  .title { font-size: 11.5pt; color: #5d717d; margin-top: 1.5mm; }
-  .contact { align-self: end; font-size: 9.6pt; line-height: 1.6; }
-  h2 { font-size: 12.5pt; font-weight: 500; color: #ab5049; margin: 0 0 2.2mm; }
+  header { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 62mm; column-gap: 9mm; padding-bottom: 6mm; margin-bottom: 6mm; border-bottom: 0.6pt solid #e4dcd8; }
+  h1 { font-size: 28pt; font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; }
+  .title { font-family: "IBM Plex Mono", monospace; font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: #ab5049; margin-top: 2.5mm; }
+  .contact { align-self: end; font-family: "IBM Plex Mono", monospace; font-size: 7.6pt; line-height: 1.8; color: #5c5557; white-space: nowrap; }
+  h2 { font-family: "IBM Plex Mono", monospace; font-size: 8.2pt; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; color: #ab5049; margin: 0 0 2.6mm; }
   section + section { margin-top: 5.5mm; }
   p { text-align: left; }
   .job + .job { margin-top: 3.6mm; }
-  .org { font-size: 8pt; text-transform: uppercase; letter-spacing: 0.02em; color: #5d717d; }
-  .role { font-weight: 700; font-size: 10.4pt; }
-  .meta { font-size: 8.4pt; color: #5d717d; margin-bottom: 1mm; }
+  .org { font-family: "IBM Plex Mono", monospace; font-size: 7.4pt; text-transform: uppercase; letter-spacing: 0.06em; color: #5c5557; }
+  .role { font-weight: 600; font-size: 10.6pt; }
+  .meta { font-family: "IBM Plex Mono", monospace; font-size: 7.6pt; color: #5c5557; margin-bottom: 1.2mm; }
   ul { padding-left: 4.2mm; }
   li + li { margin-top: 0.7mm; }
-  .label { font-weight: 700; }
+  li::marker { color: #ab5049; }
+  .label { font-weight: 600; }
   .group + .group { margin-top: 2.6mm; }
   .cert + .cert { margin-top: 2.4mm; }
-  .cert .name { font-weight: 700; }
-  .cert .detail { font-size: 8.4pt; color: #5d717d; }
-  .confirm { font-size: 7.6pt; color: #8a969d; white-space: nowrap; }
+  .cert .name { font-weight: 600; }
+  .cert .detail { font-family: "IBM Plex Mono", monospace; font-size: 7.4pt; color: #5c5557; }
+  .confirm { font-family: "IBM Plex Mono", monospace; font-size: 6.8pt; color: #7d7578; white-space: nowrap; }
 </style>
 </head>
 <body>
